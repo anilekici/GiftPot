@@ -25,7 +25,7 @@ class GiftsController < ApplicationController
   def destroy
     @gift.destroy
 
-    redirect_to pot_path(@pot), , alert: "Your Gift has been deleted"
+    redirect_to pot_path(@pot), alert: "Your Gift has been deleted"
   end
 
   private
