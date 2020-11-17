@@ -15,9 +15,10 @@ class PotsController < ApplicationController
 
   def create
     @pot = Pot.new(pot_params)
-     
+    @pot.owner = current_user
+    
     if @pot.save
-      redirect_to pot_path(@pot), notice: "Well done!! You just created a POT"
+      redirect_to pot_path(@pot.id), notice: "Well done!! You just created a POT"
     else
       render :new
     end 
@@ -34,7 +35,7 @@ class PotsController < ApplicationController
   private
 
   def pot_params
-    params.require(:pot).permit(:name)
+    params.require(:pot).permit(:name, :description, :min_amount, :owner)
   end
 
   def set_pot
