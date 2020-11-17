@@ -1,1 +1,8 @@
-<%= @pot.name %>
+<ul>
+  <li><%= @pot.name %></li>
+  <li><%= @pot.description %></li>
+  <li><%= @pot.min_amount %></li>
+  <li><%= @pot.owner.first_name %></li>
+  <li><%= @pot.users.first %></li>
+  <li><%= @pot.gifts.first.votes %></li>
+</ul>
