@@ -6,12 +6,14 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+puts "destroying all your precious gifts"
+Gift.destroy_all
 puts "deleting pots"
 Pot.destroy_all
 puts "deleting users"
 User.destroy_all
-puts "destroying all your precious gifts"
-Gift.destroy_all
+puts "destroyin all users pots"
+UsersPot.destroy_all
 
 puts "creating users"
 20.times do
@@ -38,5 +40,13 @@ puts "creating gifts"
 18.times do
   Gift.create!(
       pot: Pot.all.sample,
+  )
+end
+
+puts "creating users pots"
+30.times do
+  UsersPot.create!(
+    user: User.all.sample,
+    pot: Pot.all.sample,
   )
 end
