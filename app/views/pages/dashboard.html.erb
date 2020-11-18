@@ -1,0 +1,46 @@
+<div class="dash-container">
+  <div class="show-text">
+    <% @user = current_user  %>
+    <h2><%= @user.first_name %>'s Dashboard</h2>
+  </div>
+
+  <div class="dash-section">
+    <h3 class= "text-center"> Pots Where <%= @user.first_name %> is Owner </h3>
+
+    <% if @user.pots.count != 0 %>
+      <% @user.pots.each do |pot| %>
+      <ul>
+        <li><%= link_to "#{pot.name}", pot_path(pot) %></li>
+        <li> <%=  "to code: remaining time, contributors or members, cash raised" %></li>
+      </ul>
+      <% end %>
+    <% else %>
+      <ul>
+        <li> <%="You're not leading any pots" %> </li>
+      </ul>
+    <% end %>
+  </div>
+
+  <div class="dash-section">
+    <h3 class= "text-center"> Pots Where <%= @user.first_name %> is a Member </h3>
+
+    May need to change schema for this?
+
+    <%# if @user.userspots.count != 0 %>
+      <%# @user.userspots.each do |userpot| %>
+        <ul>
+          <li> pot.name when it can be called<%#= pot.name %></li>
+          <li> to code: remaining time, contributors or members, cash raised </li>
+        </ul>
+      <%# end %>
+    <%# else %>
+      <ul>
+        <li> OR - <%="You're not taking part in any pots" %> </li>
+      </ul>
+    <%# end %>
+  </div>
+
+  <div>
+    <p> <%= link_to "Create Pot", new_pot_path %>
+  </div>
+</div>

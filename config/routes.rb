@@ -6,4 +6,6 @@ Rails.application.routes.draw do
     resources :gifts, only: [:new, :create, :index, :destroy]
   end
   resources :gifts, only: [:edit, :update]
+
+  get '/dashboard', to: 'pages#dashboard'
 end

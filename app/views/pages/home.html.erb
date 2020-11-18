@@ -2,11 +2,13 @@
   <div class="home-banner">
     <h1>GiftPot</h1>
     <p>Coming Soon!</p>
-  </div>
 
-  <div class="home-button">
-
-
+    <div class="d-flex justify-content-around mb-3">
+        <p class="mb-0"><%= link_to "Create Pot", new_pot_path, class: "black-btn" %></p>
+        <% if user_signed_in? %>
+        <p class= "mb-0"><%= link_to "My Pots", dashboard_path, class: "black-btn" %></p>
+        <% end %>
+    </div>
   </div>
 </body>
 
