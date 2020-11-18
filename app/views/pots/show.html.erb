@@ -3,7 +3,7 @@
   <li><%= @pot.name %></li>
   <li><%= @pot.description %></li>
   <li><%= @pot.min_amount %></li>
-  <li><%= @pot.owner.first_name %></li>
+  <li><%= @pot.owner.first_name.capitalize %></li>
   <li><%= @pot.users.first %></li>
 </ul>
 
@@ -67,5 +67,5 @@
             </a>
         </div>
     </div>
-    <h5 class="mt-2">Advances one slide at a time</h5>
+    <h3 class="mt-2">Advances one slide at a time</h3>
 </div>
