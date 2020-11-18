@@ -7,8 +7,8 @@
   <div class="dash-section">
     <h3 class= "text-center"> Pots Where <%= @user.first_name %> is Owner </h3>
 
-    <% if @user.pots.count != 0 %>
-      <% @user.pots.each do |pot| %>
+    <% if @user.owned_pots.count != 0 %>
+      <% @user.owned_pots.each do |pot| %>
       <ul>
         <li><%= link_to "#{pot.name}", pot_path(pot) %></li>
         <li> <%=  "to code: remaining time, contributors or members, cash raised" %></li>
@@ -26,18 +26,18 @@
 
     May need to change schema for this?
 
-    <%# if @user.userspots.count != 0 %>
-      <%# @user.userspots.each do |userpot| %>
+    <% if @user.pots.count != 0 %>
+      <% @user.pots.each do |pot| %>
         <ul>
-          <li> pot.name when it can be called<%#= pot.name %></li>
+          <li> <%= pot.name %></li>
           <li> to code: remaining time, contributors or members, cash raised </li>
         </ul>
-      <%# end %>
-    <%# else %>
+      <%end %>
+    <% else %>
       <ul>
         <li> OR - <%="You're not taking part in any pots" %> </li>
       </ul>
-    <%# end %>
+    <% end %>
   </div>
 
   <div>
