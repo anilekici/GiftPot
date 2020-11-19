@@ -6,10 +6,14 @@ class User < ApplicationRecord
 
   has_many :owned_pots, class_name: 'Pot'
 
-  has_many :votes
-
   has_many :users_pots
   has_many :pots, through: :users_pots
 
+  has_one :gift_vote
+
   validates :first_name, :last_name, :email, presence: true
+
+  def has_voted?(gift)
+    GiftVote.find_by(gift: gift.id, user: self) ? true : false
+  end
 end

@@ -38,9 +38,8 @@ end
 
 puts "creating gifts"
 18.times do
-  Gift.create!(
-      pot: Pot.all.sample,
-      votes: rand(2..18)
+  gift = Gift.create!(
+      pot: Pot.all.sample
   )
 end
 
@@ -49,5 +48,22 @@ puts "creating users pots"
   UsersPot.create!(
     user: User.all.sample,
     pot: Pot.all.sample,
+  )
+end
+
+puts "creating gift votes"
+def get_voting_user(gift)
+  user = User.all.sample
+  while user.has_voted?(gift)
+    user = User.all.sample
+  end
+  user
+end
+
+18.times do
+  gift = Gift.all.sample
+  gift_vote = GiftVote.create!(
+      gift: gift,
+      user: get_voting_user(gift)
   )
 end
