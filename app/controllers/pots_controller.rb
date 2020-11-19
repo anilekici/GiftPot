@@ -35,7 +35,7 @@ class PotsController < ApplicationController
   private
 
   def pot_params
-    params.require(:pot).permit(:name, :description, :min_amount, :owner)
+    params.require(:pot).permit(:name, :description, :min_amount, :end_date, :owner)
   end
 
   def set_pot
