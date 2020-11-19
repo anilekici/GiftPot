@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   resources :pots, except: [:destroy] do
     resources :gifts, only: [:new, :create, :destroy]
     member do 
-      post 'gifts/:id', to: 'gifts#upvote', as: 'upvote'
-      post 'gifts/:id', to: 'gifts#downvote', as: 'downvote'
+      post 'gifts/:gift_id/upvote', to: 'gifts#upvote', as: 'upvote'
+      post 'gifts/:gift_id/downvote', to: 'gifts#downvote', as: 'downvote'
     end
   end
   resources :gifts, only: [:edit, :update]

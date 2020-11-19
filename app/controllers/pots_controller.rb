@@ -7,6 +7,7 @@ class PotsController < ApplicationController
   end
 
   def show
+    @first_gift = @pot.gifts.first
   end
 
   def new

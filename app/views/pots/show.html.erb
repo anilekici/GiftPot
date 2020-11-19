@@ -6,36 +6,49 @@
 <div class="container text-center my-3">
   <h2 class="font-weight-light">Gift Options</h2>
   <div class="row mx-auto my-auto">
-    <div id="recipeCarousel" class="carousel slide w-100" data-ride="carousel">
-      <div class="carousel-inner w-100" role="listbox">
-        <div class="carousel-item active">
-          <div class="col-md-4">
-            <div class="card card-body">
-              <%= @pot.gifts.first.id %>
-              <div class="vote-button"><%= button_to "Vote", upvote_path %></div>
+    <% if @pot.gifts.any? %>
+      <div id="recipeCarousel" class="carousel slide w-100" data-ride="carousel">
+        <div class="carousel-inner w-100" role="listbox">
+          <div class="carousel-item active">
+            <div class="col-md-4">
+              <div class="card card-body">
+                <%= @first_gift.id %>
+                <% if current_user.has_voted?(@first_gift) %>
+                  <div class="vote-button"><%= link_to "Cancel", downvote_pot_path(@pot, @first_gift), method: :post %></div>
+                <% else %>
+                  <div class="vote-button"><%= link_to "Vote", upvote_pot_path(@pot, @first_gift), method: :post %></div>
+                <% end %>
+              </div>
             </div>
           </div>
-        </div>
-        <% @pot.gifts.offset(1).each do |gift| %>
-        <div class="carousel-item" class=>
-            <div class="col-md-4">
-                <div class="card card-body">
-                  <%= gift.id %>
-                  <div class="vote-button"><%= button_to "Vote", upvote_path %></div>
+          <% @pot.gifts.offset(1).each do |gift| %>
+            <div class="carousel-item" class=>
+                <div class="col-md-4">
+                    <div class="card card-body">
+                      <%= gift.id %>
+                      <% if current_user.has_voted?(@first_gift) %>
+                        <div class="vote-button"><%= link_to "Cancel", downvote_pot_path(@pot, gift), method: :post %></div>
+                      <% else %>
+                        <div class="vote-button"><%= link_to "Vote", upvote_pot_path(@pot, gift), method: :post %></div>
+                      <% end %>
+                    </div>
                 </div>
             </div>
+          <% end %>
+          <a class="carousel-control-prev w-auto" href="#recipeCarousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon bg-dark border border-dark rounded-circle" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next w-auto" href="#recipeCarousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon bg-dark border border-dark rounded-circle" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
         </div>
-        <% end %>
-        <a class="carousel-control-prev w-auto" href="#recipeCarousel" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon bg-dark border border-dark rounded-circle" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next w-auto" href="#recipeCarousel" role="button" data-slide="next">
-          <span class="carousel-control-next-icon bg-dark border border-dark rounded-circle" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
       </div>
-    </div>
+    <% else %>
+      <h2>RENDER NEW GIFT FORM .....</h2>
+    <% end %>
+    
   </div>
 </div>
 <button type="button" class="btn btn-primary"><%= link_to "Contribute", pot_path(@pot) %></button>
