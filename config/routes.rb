@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   resources :gifts, only: [:edit, :update]
 
   get '/dashboard', to: 'pages#dashboard'
+  post 'pots/:id', to: 'votes#upvote', as: 'upvote'
 end
