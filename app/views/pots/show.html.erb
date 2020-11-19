@@ -14,8 +14,12 @@
             <div class="col-md-4">
               <div class="card card-body">
                 <%= @first_gift.id %>
-                <% if current_user.has_voted?(@first_gift) %>
-                  <div class="vote-button"><%= link_to "Cancel", downvote_pot_path(@pot, @first_gift), method: :post %></div>
+                Votes: <%= @first_gift.votes %>
+                <% if current_user.has_voted_in_pot?(@pot) %>
+                  <% if current_user.has_voted?(@first_gift) %>
+                    <div class="vote-button"><%= link_to "Cancel", downvote_pot_path(@pot, @first_gift), method: :post %></div>
+                  <% end %>
+                
                 <% else %>
                   <div class="vote-button"><%= link_to "Vote", upvote_pot_path(@pot, @first_gift), method: :post %></div>
                 <% end %>
@@ -27,8 +31,11 @@
                 <div class="col-md-4">
                     <div class="card card-body">
                       <%= gift.id %>
-                      <% if current_user.has_voted?(@first_gift) %>
-                        <div class="vote-button"><%= link_to "Cancel", downvote_pot_path(@pot, gift), method: :post %></div>
+                      Votes: <%= gift.votes %>
+                      <% if current_user.has_voted_in_pot?(@pot) %>
+                        <% if current_user.has_voted?(gift) %>
+                          <div class="vote-button"><%= link_to "Cancel", downvote_pot_path(@pot, gift), method: :post %></div>
+                        <% end %>
                       <% else %>
                         <div class="vote-button"><%= link_to "Vote", upvote_pot_path(@pot, gift), method: :post %></div>
                       <% end %>

@@ -20,6 +20,7 @@ class GiftsController < ApplicationController
 
   def upvote
     @gift_vote = GiftVote.create(gift: @gift, user: current_user)
+
     redirect_to pot_path(@pot)
   end
 
@@ -27,7 +28,6 @@ class GiftsController < ApplicationController
     @user = current_user
     @gift_vote = GiftVote.find_by(gift: @gift, user: current_user)
     @gift_vote.destroy
-    raise
     redirect_to pot_path(@pot)
   end
 

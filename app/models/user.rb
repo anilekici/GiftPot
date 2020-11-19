@@ -13,7 +13,12 @@ class User < ApplicationRecord
 
   validates :first_name, :last_name, :email, presence: true
 
-  def has_voted?(gift)
-    GiftVote.find_by(gift: gift.id, user: self).present?
+  def has_voted_in_pot?(pot)
+    pot.gift_votes.find_by(user: self).present?
   end
+
+  def has_voted?(gift)
+    GiftVote.find_by(gift: gift, user: self).present?
+  end
+
 end
