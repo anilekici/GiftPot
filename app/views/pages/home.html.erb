@@ -1,15 +1,14 @@
 <body>
   <div class="home-banner">
-    <div>
+    <div class="home-text">
+      <h2>Welcome to</h2>
       <h1>GiftPot</h1>
-      <p>Coming Soon!</p>
     </div>
     <div class="d-flex justify-content-around mb-3">
-        <p class="mb-0"><%= link_to "Create Pot", new_pot_path, class: "black-btn" %></p>
+        <p class="home-buttons"><%= link_to "Create Pot", new_pot_path, class: "blue-btn" %></p>
         <% if user_signed_in? %>
-        <p class= "mb-0"><%= link_to "My Pots", dashboard_path, class: "black-btn" %></p>
+          <p class= "home-buttons"><%= link_to "My Pots", dashboard_path, class: "blue-btn" %></p>
         <% end %>
     </div>
   </div>
 </body>
-
