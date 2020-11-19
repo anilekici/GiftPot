@@ -32,5 +32,5 @@ import { Carousel } from 'packs/_carousel';
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
-  carousel
+
 });
