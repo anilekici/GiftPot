@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_18_223051) do
+ActiveRecord::Schema.define(version: 2020_11_16_160935) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "gifts", force: :cascade do |t|
     t.bigint "pot_id", null: false
+    t.integer "votes", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["pot_id"], name: "index_gifts_on_pot_id"
@@ -57,20 +58,8 @@ ActiveRecord::Schema.define(version: 2020_11_18_223051) do
     t.index ["user_id"], name: "index_users_pots_on_user_id"
   end
 
-  create_table "votes", force: :cascade do |t|
-    t.bigint "gift_id", null: false
-    t.bigint "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "number", default: 0
-    t.index ["gift_id"], name: "index_votes_on_gift_id"
-    t.index ["user_id"], name: "index_votes_on_user_id"
-  end
-
   add_foreign_key "gifts", "pots"
   add_foreign_key "pots", "users"
   add_foreign_key "users_pots", "pots"
   add_foreign_key "users_pots", "users"
-  add_foreign_key "votes", "gifts"
-  add_foreign_key "votes", "users"
 end
