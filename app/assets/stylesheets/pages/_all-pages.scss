@@ -25,10 +25,18 @@ ul {
 }
 
 a {
-  text-decoration: none;
+  // text-decoration: none;
+  color: inherit; /* blue colors for links too */
+  text-decoration: inherit
 }
 
 a.hover {
   font-size: 24px;
   text-decoration: none;
 }
+
+// .centered {
+//   position: absolute; 
+//   top: 50%;
+//   left: 50%;
+// }

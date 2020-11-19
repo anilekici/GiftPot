@@ -34,3 +34,10 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
 
 });
+
+import flatpicker from 'flatpickr';
+import 'flatpickr/dist/flatpickr.min.css'
+
+flatpicker(".datepicker", {
+
+});
