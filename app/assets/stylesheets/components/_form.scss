@@ -1,0 +1,64 @@
+.limiter {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+div {
+  display: block;
+}
+
+.container-newpot {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  background: #e67d22c5;
+  }
+
+.wrap-newpot {
+  padding: 40px 15px 33px;
+  width: 390px;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,.2);
+}
+
+.newpot-form {
+  width: 100%;
+}
+
+.newpot-form-title {
+  display: block;
+  font-family: 'Julius Sans One', sans-serif;
+  font-size: 30px;
+  color: #333;
+  line-height: 1.2;
+  text-align: center; 
+}
+
+.p-b-66 {
+  padding-bottom: 46px;
+}
+
+.container-submit-btn {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-top: 13px;
+}
+
+.wrap-submit-btn {
+  width: 100%;
+  display: block;
+  position: relative;
+  z-index: 1;
+  border-radius: 25px;
+  overflow: hidden;
+  margin: 0 auto;
+}
