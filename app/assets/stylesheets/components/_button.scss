@@ -12,6 +12,24 @@
       //button Click Me!
     //.name Dubstep
 
+.blue-btn {
+    background-color: #5267F8;
+    color: white;
+    // border-color: #343a40;
+    display: inline-block;
+    font-weight: 450;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    width: 120px;
+    border: 1px solid;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 5px;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
 
 .standard-button {
   background: transparent;
