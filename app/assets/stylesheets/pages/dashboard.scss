@@ -1,10 +1,32 @@
 .dash-container{
-  padding: 10px;
-  background-color: #5268f88f;
+  // padding: 10px;
+  // background-color: #5268f88f;
   flex-direction: column;
-  justify-content: space-between;
+  // justify-content: space-between;
+  // display: flex;
+  // margin: 10px;
+  // width: 100%;
+  // min-height: 100vh;
+  width: 100%;
+  min-height: 100vh;
   display: flex;
-  margin: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  background: red;
+}
+
+.wrap-dash-cards {
+  padding: 40px 15px 33px;
+  width: 390px;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,.2);
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 // .dash-section {

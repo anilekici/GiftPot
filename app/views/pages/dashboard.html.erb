@@ -2,7 +2,6 @@
   <div class="show-text">
     <% @user = current_user  %>
     <h2 class= "text-center"><%= @user.first_name.capitalize %>'s Pots</h2>
-  </div>
 
   <% if @user.owned_pots.count != 0 %>
   <% @user.owned_pots.each do |pot| %>
@@ -24,6 +23,7 @@
         </div>
       </div>
       <% end %>
+    </div>
     </div>
 </div>
 
