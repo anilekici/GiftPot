@@ -42,6 +42,13 @@ puts "creating pots"
   )
 end
 
+puts "creating users pots"
+30.times do
+  UsersPot.create!(
+    user: User.all.sample,
+    pot: Pot.all.sample,
+  )
+end
 
 puts "creating gifts"
 18.times do
@@ -51,13 +58,6 @@ puts "creating gifts"
   )
 end
 
-puts "creating users pots"
-30.times do
-  UsersPot.create!(
-    user: User.all.sample,
-    pot: Pot.all.sample,
-  )
-end
 
 puts "creating gift votes"
 def get_voting_user(gift)
