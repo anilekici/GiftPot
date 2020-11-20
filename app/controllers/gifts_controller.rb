@@ -14,7 +14,7 @@ class GiftsController < ApplicationController
     if @gift.save
       redirect_to pot_path(@pot.id), notice: "Well done!! You added a Gift Option"
     else
-      redirect_to pot_path(@pot.id)
+      redirect_to pot_path(@pot.id), notice: "Add name!!!"
     end
   end
 
