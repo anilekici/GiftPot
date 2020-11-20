@@ -35,6 +35,7 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'faker'
 gem 'cloudinary'
+gem 'money-rails'
 
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'
