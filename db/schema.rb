@@ -25,8 +25,8 @@ ActiveRecord::Schema.define(version: 2020_11_19_120851) do
   end
 
   create_table "gifts", force: :cascade do |t|
+    t.string "name", null: false
     t.bigint "pot_id", null: false
-    t.integer "votes", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["pot_id"], name: "index_gifts_on_pot_id"

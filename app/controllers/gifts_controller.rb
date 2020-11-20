@@ -7,10 +7,16 @@ class GiftsController < ApplicationController
   end
 
   def create
+    @pot = Pot.find(params[:pot_id])
     @gift = Gift.new(gift_params)
+    @gift.pot = @pot
     @gift.save
+    if @gift.save
+      redirect_to pot_path(@pot.id), notice: "Well done!! You added a Gift Option"
+    else
+      redirect_to pot_path(@pot.id)
+    end
   end
-
 
   def destroy
     @gift.destroy
@@ -20,12 +26,10 @@ class GiftsController < ApplicationController
 
   def upvote
     @gift_vote = GiftVote.create(gift: @gift, user: current_user)
-
     redirect_to pot_path(@pot)
   end
 
   def downvote
-    @user = current_user
     @gift_vote = GiftVote.find_by(gift: @gift, user: current_user)
     @gift_vote.destroy
     redirect_to pot_path(@pot)
@@ -34,7 +38,7 @@ class GiftsController < ApplicationController
   private
 
   def gift_params
-    params.require(:gift).permit(:pot_id)
+    params.require(:gift).permit(:pot_id, :name)
   end
 
   def set_gift

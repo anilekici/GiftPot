@@ -19,7 +19,7 @@ puts "creating users"
 20.times do
   User.create!(
     email: Faker::Internet.email,
-    password: Faker::Internet.password,
+    password: "123456",
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
   )
@@ -29,9 +29,9 @@ end
 puts "creating pots"
 5.times do
   Pot.create!(
-      owner: User.all.sample,
-      name: Faker::Movies::StarWars.character,
-      description: Faker::Quote.yoda,
+    owner: User.all.sample,
+    name: Faker::Movies::StarWars.character,
+    description: Faker::Quote.yoda,
   )
 end
 
@@ -39,7 +39,8 @@ end
 puts "creating gifts"
 18.times do
   gift = Gift.create!(
-      pot: Pot.all.sample
+    pot: Pot.all.sample,
+    name: Faker::Game.platform,
   )
 end
 
