@@ -1,7 +1,7 @@
 class GiftsController < ApplicationController
   before_action :set_gift, only: [:edit, :upvote, :downvote]
-  before_action :set_pot, only: [:edit, :upvote, :downvote]
-    
+  before_action :set_pot, only: [:upvote, :downvote]
+
   def new
     @gift = Gift.new
   end
