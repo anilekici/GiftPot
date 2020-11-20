@@ -18,7 +18,7 @@
   <% end %>
   <% else %>
     <div class="flash flash-warning alert alert-dismissible fade show" role="alert">
-      <span>You're not leading any pots! 💰 <a href="/pots/new">Create a Pot</a> now!</span>
+      <span>You're not leading any pots! 💰 <%= link_to "Create Pot now!", new_pot_path %></span>
       <a data-dismiss="alert" aria-label="Close">
         <i class="fas fa-times"></i>
       </a>
