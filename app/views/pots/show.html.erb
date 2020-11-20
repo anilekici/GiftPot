@@ -1,13 +1,23 @@
 <div class="container text-center my-3">
-  <h2><%= @pot.owner.first_name.capitalize %>'s Pot</h2>
-  <div class="card p-2"><h6><%= @pot.description %></h6></div>
+  <h2><%= @pot.name.capitalize %>'s Pot</h2>
+  <div class="card p-2">
+    <h6><%= @pot.description %></h6>
+    <% if @pot.days_remaining == 0 %>
+    <h3> Today is the Event day </h3>
+    <% elsif @pot.days_remaining > 0 %>
+    <h6><%= @pot.days_remaining %> Days left </h6>
+    <% else %>
+    <h3> this event took place on <%= @pot.end_date.strftime("%d %b %Y") %></h3>
+    <% end %>
+  </div>
   <ul class="list-group">
   <% @ordered_gifts.each do |gift| %>
   <li class="list-group-item d-flex justify-content-between align-items-center">
-    <%= gift.name.capitalize %>
     <span class="badge badge-primary badge-pill">Votes: <%= gift.votes %></span>
+    <%= gift.name.capitalize %><%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe, gift_path(gift), method: :delete %></i>
   </li>
   <% end %>
+  
 </ul>
 
 
@@ -60,6 +70,7 @@
           </a>
         </div>
       </div>
+      <%= render 'shared/gift_form' %>
     <% else %>
       <%= render 'shared/gift_form' %>
     <% end %>
