@@ -1,4 +1,4 @@
-<div class="container text-center my-3">
+  <div class="text-center my-3">
   <h2><%= @pot.owner.first_name.capitalize %>'s Pot</h2>
   <div class="card p-2"><h6><%= @pot.description %></h6></div>
   <ul class="list-group">
@@ -12,9 +12,9 @@
 
 
 
-<div class="container  text-center my-3">
+<div class="text-center my-3">
   <h2 class="font-weight-light">Gift Options</h2>
-  <div class="col-md-4 col-md-offset-4">
+  <div class="col-md-4 col-md-offset-4" style="padding: 0">
     <% if @pot.gifts.any? %>
       <div id="recipeCarousel" class="carousel slide w-100" data-ride="carousel">
         <div class="carousel-inner w-100" role="listbox">
