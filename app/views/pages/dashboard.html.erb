@@ -9,7 +9,7 @@
     <div class="card-pot-infos">
       <div>
         <h2><%= pot.name %></h2>
-        <p><%= pot.end_date %></p>
+        <p><%= pot.end_date.strftime("%d %b %Y") %></p>
       </div>
       <%# <h2 class="card-pot-value">Raised: <%= pot.min_amount %>€</h2>
       <button class= "card-pot-btn"><%= link_to "Pot", pot_path(pot) %></button>
@@ -48,7 +48,7 @@
     <% end %>
   </div>
 
-  <div class= "container-btn-submit">
+  <div class= "container-btn-submit row justify-content-center">
     <button type= "button" class="btn-p-sm mt-3 centered"> <%= link_to "Create Pot", new_pot_path %></button>
   </div>
 </div>
