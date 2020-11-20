@@ -8,6 +8,9 @@ class PotsController < ApplicationController
 
   def show
     @first_gift = @pot.gifts.first
+    # @ordered_gifts = @pot.gifts.joins(:gift_votes).group(:id, :gift_votes).order(:gift_votes)
+    @ordered_gifts = @pot.gifts.left_joins(:gift_votes).group(:id).select('gifts.*', 'COUNT(gift_votes.id) vote_count').order('vote_count DESC')
+    @gift = Gift.new
   end
 
   def new

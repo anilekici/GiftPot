@@ -1,0 +1,19 @@
+<div class= "limiter">
+  <div class= "container-newpot">
+    <div class= "wrap-newpot">
+      <div class= "newpot-form">
+        <span class= "newpot-form-title p-b-66">
+          Add a Gift Option
+        </span>
+        <div>
+        <%= simple_form_for [@pot, @gift] do |f| %>
+          <%= f.input :name, label: "Gift's name", placeholder: "PlayStation 5", input_html: { autocomplete: "off"} %>
+        </div>
+          <div class= "container-btn-submit">
+          <%= f.submit "Add Gift", class: "btn-p mt-3" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
