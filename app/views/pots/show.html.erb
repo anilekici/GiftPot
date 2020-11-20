@@ -35,10 +35,10 @@
                 Votes: <%= @first_gift.votes %>
                 <% if current_user.has_voted_in_pot?(@pot) %>
                   <% if current_user.has_voted?(@first_gift) %>
-                    <div class="btn btn-primary"><%= link_to "Cancel", downvote_pot_path(@pot, @first_gift), method: :post %></div>
-                  <% end %>
+                    <%= link_to "Cancel", downvote_pot_path(@pot, @first_gift), class: "btn btn-primary", method: :post %>
+                    <% end %>
                 <% else %>
-                  <div class="btn btn-primary"><%= link_to "Vote", upvote_pot_path(@pot, @first_gift), method: :post %></div>
+                  <%= link_to "Vote", upvote_pot_path(@pot, @first_gift), class: "btn btn-primary", method: :post %>
                 <% end %>
               </div>
             </div>
@@ -51,10 +51,10 @@
                       Votes: <%= gift.votes %>
                       <% if current_user.has_voted_in_pot?(@pot) %>
                         <% if current_user.has_voted?(gift) %>
-                          <div class="btn btn-primary"><%= link_to "Cancel", downvote_pot_path(@pot, gift), method: :post %></div>
+                          <%= link_to "Cancel", downvote_pot_path(@pot, gift), class: "btn btn-primary", method: :post %>
                         <% end %>
                       <% else %>
-                        <div class="btn btn-primary"><%= link_to "Vote", upvote_pot_path(@pot, gift), method: :post %></div>
+                        <%= link_to "Vote", upvote_pot_path(@pot, gift), class: "btn btn-primary", method: :post %>
                       <% end %>
                     </div>
                 </div>
@@ -76,5 +76,5 @@
     <% end %>
   </div>
 </div>
-<button type="button" class="btn btn-primary"><%= link_to "Contribute", pot_path(@pot) %></button>
+<button type="button" class="btn btn-primary"><%= link_to "Contribute", pot_path(@pot), class: "btn btn-primary" %></button>
 </div>
