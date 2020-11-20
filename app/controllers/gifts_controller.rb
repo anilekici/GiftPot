@@ -1,6 +1,6 @@
 class GiftsController < ApplicationController
-  before_action :set_gift, only: [:edit, :destroy, :upvote, :downvote]
-  before_action :set_pot, only: [:edit, :destroy, :upvote, :downvote]
+  before_action :set_gift, only: [:edit, :upvote, :downvote]
+  before_action :set_pot, only: [:edit, :upvote, :downvote]
     
   def new
     @gift = Gift.new
@@ -14,14 +14,16 @@ class GiftsController < ApplicationController
     if @gift.save
       redirect_to pot_path(@pot.id), notice: "Well done!! You added a Gift Option"
     else
-      redirect_to pot_path(@pot.id)
+      redirect_to pot_path(@pot.id), notice: "Add name!!!"
     end
   end
 
   def destroy
+    @gift = Gift.find(params[:id])
+    @gift.gift_votes.destroy_all
     @gift.destroy
 
-    redirect_to pot_path(@pot), alert: "Your Gift has been deleted"
+    redirect_to pot_path(@gift.pot_id), alert: "Your Gift has been deleted"
   end
 
   def upvote

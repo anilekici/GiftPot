@@ -13,8 +13,8 @@
   <ul class="list-group">
   <% @ordered_gifts.each do |gift| %>
   <li class="list-group-item d-flex justify-content-between align-items-center">
-    <%= gift.name.capitalize %>
     <span class="badge badge-primary badge-pill">Votes: <%= gift.votes %></span>
+    <%= gift.name.capitalize %><%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe, gift_path(gift), method: :delete %></i>
   </li>
   <% end %>
   
@@ -70,6 +70,7 @@
           </a>
         </div>
       </div>
+      <%= render 'shared/gift_form' %>
     <% else %>
       <%= render 'shared/gift_form' %>
     <% end %>
