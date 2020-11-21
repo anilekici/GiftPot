@@ -11,7 +11,7 @@ div {
 
 .container-newpot {
   width: 100%;
-  // min-height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -44,7 +44,7 @@ div {
   font-size: 30px;
   color: #333;
   line-height: 1.2;
-  text-align: center;
+  text-align: center; 
 }
 
 .p-b-66 {
@@ -67,21 +67,6 @@ div {
   overflow: hidden;
   margin: 0 auto;
 }
-
-
-.form-inputs {
-  margin: 20px;
-}
-
-a {
-  margin: 20px;
-}
-
-.btn {
-  margin: 10px;
-}
-
-
 .wrap-newgift {
   padding: 40px 15px 33px;
   background: #fff;
@@ -89,4 +74,3 @@ a {
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0,0,0,.2);
 }
-
