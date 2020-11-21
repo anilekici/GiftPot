@@ -13,5 +13,4 @@ Rails.application.routes.draw do
   resources :gifts, only: [:edit, :update]
 
   get '/dashboard', to: 'pages#dashboard'
-  get '.contribute', to: 'pages#contribute'
 end
