@@ -1,5 +1,5 @@
 class ContributionsController < ApplicationController
-  before_action :set_pot, only: [:create, :show]
+  before_action :set_pot, only: [:new, :create, :show]
 
   def new
     @contribution = Contribution.new
@@ -8,6 +8,10 @@ class ContributionsController < ApplicationController
   def create
     @pot = Pot.find(params[:pot_id])
     @contribution = Contribution.new(contribution_params)
+  end
+
+  def show
+    #may not need
   end
 
   private

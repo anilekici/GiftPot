@@ -9,7 +9,7 @@ Rails.application.routes.draw do
       post 'gifts/:gift_id/upvote', to: 'gifts#upvote', as: 'upvote'
       post 'gifts/:gift_id/downvote', to: 'gifts#downvote', as: 'downvote'
     end
-    resources :contributions, only: [:create]
+    resources :contributions, only: [:new, :create]
   end
   resources :gifts, only: [:edit, :update]
 
