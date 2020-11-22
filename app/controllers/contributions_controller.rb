@@ -21,6 +21,6 @@ class ContributionsController < ApplicationController
   end
 
   def set_pot
-    @pot = Pot.find(params[:id])
+    @pot = Pot.find(params[:pot_id])
   end
 end
