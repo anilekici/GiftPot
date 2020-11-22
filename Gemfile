@@ -36,6 +36,7 @@ gem 'simple_form'
 gem 'faker'
 gem 'cloudinary'
 gem 'money-rails'
+gem 'stripe'
 
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'
