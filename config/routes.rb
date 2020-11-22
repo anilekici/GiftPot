@@ -12,5 +12,7 @@ Rails.application.routes.draw do
   end
   resources :gifts, only: [:edit, :update]
 
+  resources :contributions, only: [:show, :create]
+
   get '/dashboard', to: 'pages#dashboard'
 end
