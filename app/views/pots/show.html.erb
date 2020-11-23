@@ -9,6 +9,7 @@
     <% else %>
     <h3> this event took place on <%= @pot.end_date.strftime("%d %b %Y") %></h3>
     <% end %>
+    <h3><strong>€<%= @pot.total_amount/100 %> raised </strong><h3>
   </div>
   <ul class="list-group">
   <% @ordered_gifts.each do |gift| %>

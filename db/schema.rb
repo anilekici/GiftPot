@@ -10,13 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_23_152627) do
+
+ActiveRecord::Schema.define(version: 2020_11_23_160827) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "chatrooms", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "pot_id", null: false
@@ -54,7 +56,7 @@ ActiveRecord::Schema.define(version: 2020_11_23_152627) do
   end
 
   create_table "messages", force: :cascade do |t|
-    t.string "content"
+    t.string "content", null: false
     t.bigint "chatroom_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -72,6 +74,7 @@ ActiveRecord::Schema.define(version: 2020_11_23_152627) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "total_amount", default: 0
     t.index ["user_id"], name: "index_pots_on_user_id"
   end
 
