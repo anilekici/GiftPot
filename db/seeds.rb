@@ -16,6 +16,8 @@ puts "destroying all your precious gifts"
 Gift.destroy_all
 puts "destroyin all users pots"
 UsersPot.destroy_all
+puts "destroying all contributions"
+Contribution.destroy_all
 puts "deleting pots"
 Pot.destroy_all
 puts "deleting users"
