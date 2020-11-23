@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :users_pots
   has_many :pots, through: :users_pots
 
+  has_many :contributions
+
   has_one :gift_vote
 
   validates :first_name, :last_name, :email, presence: true
