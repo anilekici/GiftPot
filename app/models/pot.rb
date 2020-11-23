@@ -11,7 +11,7 @@ class Pot < ApplicationRecord
 
   has_one :chatroom
 
-  validates :name, presence: true
+  validates :name, :end_date, presence: true
 
   def days_remaining
     date = Date.today
