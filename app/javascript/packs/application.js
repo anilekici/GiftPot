@@ -30,9 +30,11 @@ import 'flatpickr/dist/flatpickr.min.css'
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 import { Carousel } from 'packs/_carousel';
+import { initChatroomCable } from 'channels/chatroom_channel';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   flatpicker(".datepicker", {});
+  initChatroomCable();
 });

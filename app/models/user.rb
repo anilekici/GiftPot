@@ -13,6 +13,8 @@ class User < ApplicationRecord
 
   has_one :gift_vote
 
+  has_many :messages
+
   validates :first_name, :last_name, :email, presence: true
 
   def has_voted_in_pot?(pot)
