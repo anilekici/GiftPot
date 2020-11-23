@@ -7,6 +7,8 @@ class Pot < ApplicationRecord
   has_many :gifts
   has_many :gift_votes, through: :gifts
 
+  has_many :contributions
+
   validates :name, presence: true
 
   def days_remaining

@@ -10,15 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_23_110243) do
+
+
+ActiveRecord::Schema.define(version: 2020_11_23_113653) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
 
   create_table "chatrooms", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+ 
+  create_table "contributions", force: :cascade do |t|
+    t.string "contribution_sku"
+    t.integer "amount_cents", default: 0, null: false
+    t.string "session_id"
+    t.bigint "user_id", null: false
+    t.bigint "pot_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["pot_id"], name: "index_contributions_on_pot_id"
+    t.index ["user_id"], name: "index_contributions_on_user_id"
   end
 
   create_table "gift_votes", force: :cascade do |t|
@@ -35,6 +51,7 @@ ActiveRecord::Schema.define(version: 2020_11_23_110243) do
     t.bigint "pot_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "price", default: 0
     t.index ["pot_id"], name: "index_gifts_on_pot_id"
   end
 
@@ -84,6 +101,8 @@ ActiveRecord::Schema.define(version: 2020_11_23_110243) do
     t.index ["user_id"], name: "index_users_pots_on_user_id"
   end
 
+  add_foreign_key "contributions", "pots"
+  add_foreign_key "contributions", "users"
   add_foreign_key "gift_votes", "gifts"
   add_foreign_key "gift_votes", "users"
   add_foreign_key "gifts", "pots"
