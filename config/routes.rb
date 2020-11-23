@@ -11,11 +11,11 @@ Rails.application.routes.draw do
       post 'gifts/:gift_id/upvote', to: 'gifts#upvote', as: 'upvote'
       post 'gifts/:gift_id/downvote', to: 'gifts#downvote', as: 'downvote'
     end
-    resources :contributions, only: [:new, :create]
+    resources :contributions, only: [:new, :create, :show] do
+      resources :payments, only: [:new]
+    end
   end
   resources :gifts, only: [:edit, :update, :destroy]
-
-  resources :contributions, only: [:show]
 
   get '/dashboard', to: 'pages#dashboard'
 end
