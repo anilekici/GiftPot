@@ -39,10 +39,13 @@ end
 
 puts "creating pots"
 5.times do
+  name = Faker::Movies::StarWars.character
   Pot.create!(
     owner: User.all.sample,
-    name: Faker::Movies::StarWars.character,
+    name: name,
     description: Faker::Quote.yoda,
+    end_date: "20 Dec 2020",
+    chatroom: Chatroom.create(name: "#{name}'s Chatroom")
   )
 end
 
@@ -107,11 +110,13 @@ ardy = User.create!(
   first_name: "Ardy",
   last_name: "Ardy",
 )
-
+name = Faker::Movies::StarWars.character
 Pot.create!(
   owner: anil,
-  name: Faker::Movies::StarWars.character,
+  name: name,
   description: Faker::Quote.yoda,
+  end_date: "20 Dec 2020",
+  chatroom: Chatroom.create(name: "#{name}'s Chatroom"),
 )
 
 UsersPot.create!(
