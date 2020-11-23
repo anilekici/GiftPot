@@ -1,0 +1,9 @@
+<div class="container  text-center my-3">
+<% @pots.each do |pot| %>
+<h3><%= link_to "#{pot.chatroom.name}", chatroom_path(pot.chatroom), class: "btn btn-primary" %></h3>
+<% end %>
+
+<% @owned_pots.each do |pot| %>
+<h3><%= link_to "#{pot.chatroom.name}", chatroom_path(pot.chatroom), class: "btn btn-primary" %></h3>
+<% end %>
+</div>
