@@ -1,4 +1,4 @@
-  
+
 
     <% @user = current_user  %>
     <h2 class= "dash-title"> My Pots</h2>
@@ -8,8 +8,8 @@
   <div class="card-pot">
     <div class="card-pot-infos">
       <div>
-        <h2><%= pot.name %></h2>
-        <p><%= pot.end_date.strftime("%d %b %Y") %></p>
+        <h2><%= pot.name %> </h2>
+        <p><%= pot.end_date.strftime("%d %b %Y") %> - <strong>€<%= pot.total_amount/100 %></strong> raised</p>
       </div>
       <%# <h2 class="card-pot-value">Raised: <%= pot.min_amount %>€</h2>
       <button class= "card-pot-btn"><%= link_to "Pot", pot_path(pot) %></button>
@@ -26,13 +26,13 @@
   <% end %>
 
 
-  
+
 
 <h3 class= "text-center"> Pots Where I'm a Member </h3>
 
 
   <div class="card-product">
-    
+
 
     <% if @user.pots.count != 0 %>
       <% @user.pots.each do |pot| %>

@@ -26,7 +26,7 @@ class ContributionsController < ApplicationController
   )
     if @contribution.save
       @pot.total_amount += @contribution.amount_cents
-      @pot = Pot.save
+      @pot.save
       @contribution.update(session_id: session.id)
       redirect_to new_pot_contribution_payment_path(@pot, @contribution)
     else
