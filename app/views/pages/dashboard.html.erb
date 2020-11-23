@@ -3,6 +3,8 @@
     <% @user = current_user  %>
     <h2 class= "dash-title"> My Pots</h2>
 
+  <h3 class= "text-center"> Pots Where I'm the Leader </h3>
+
   <% if @user.owned_pots.count != 0 %>
   <% @user.owned_pots.each do |pot| %>
   <div class="card-pot">
@@ -31,22 +33,28 @@
 <h3 class= "text-center"> Pots Where I'm a Member </h3>
 
 
-  <div class="card-product">
 
 
     <% if @user.pots.count != 0 %>
       <% @user.pots.each do |pot| %>
-        <ul>
-          <li> <%= pot.name %></li>
-          <li> to code: remaining time, contributors or members, cash raised </li>
-        </ul>
+      <div class="card-pot">
+        <div class="card-pot-infos">
+          <div>
+            <h2><%= pot.name %> </h2>
+            <p><%= pot.end_date.strftime("%d %b %Y") %> - <strong>€<%= pot.total_amount/100 %></strong> raised</p>
+          </div>
+      <%# <h2 class="card-pot-value">Raised: <%= pot.min_amount %>€</h2>
+        <button class= "card-pot-btn"><%= link_to "Pot", pot_path(pot) %></button>
+        </div>
+      </div>
       <%end %>
     <% else %>
+      <div>
       <ul>
         <li><%="You're not taking part in any pots" %> </li>
       </ul>
-    <% end %>
-  </div>
+      <% end %>
+      </div>
 
   <div class= "container-btn-submit row justify-content-center">
     <button type= "button" class="btn-p-sm mt-3 centered"> <%= link_to "Create Pot", new_pot_path %></button>
