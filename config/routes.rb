@@ -16,10 +16,9 @@ Rails.application.routes.draw do
     end
   end
   resources :gifts, only: [:edit, :update, :destroy]
-
-  resources :chatrooms, only: :show do
+  
+  resources :chatrooms, only: [:show, :index] do
     resources :messages, only: :create
   end
-
   get '/dashboard', to: 'pages#dashboard'
 end

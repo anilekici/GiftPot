@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2020_11_23_160827) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +21,8 @@ ActiveRecord::Schema.define(version: 2020_11_23_160827) do
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "pot_id", null: false
+    t.index ["pot_id"], name: "index_chatrooms_on_pot_id"
   end
 
   create_table "contributions", force: :cascade do |t|
@@ -98,6 +102,7 @@ ActiveRecord::Schema.define(version: 2020_11_23_160827) do
     t.index ["user_id"], name: "index_users_pots_on_user_id"
   end
 
+  add_foreign_key "chatrooms", "pots"
   add_foreign_key "contributions", "pots"
   add_foreign_key "contributions", "users"
   add_foreign_key "gift_votes", "gifts"

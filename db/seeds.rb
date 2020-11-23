@@ -6,6 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+puts "destroying all messages"
+Message.destroy_all
+puts "destroying all chatrooms"
+Chatroom.destroy_all
 puts "destroying all your votes"
 GiftVote.destroy_all
 puts "destroying all your precious gifts"
@@ -35,10 +39,13 @@ end
 
 puts "creating pots"
 5.times do
+  name = Faker::Movies::StarWars.character
   Pot.create!(
     owner: User.all.sample,
-    name: Faker::Movies::StarWars.character,
+    name: name,
     description: Faker::Quote.yoda,
+    end_date: "20 Dec 2020",
+    chatroom: Chatroom.create(name: "#{name}'s Chatroom")
   )
 end
 
@@ -75,3 +82,52 @@ end
       user: get_voting_user(gift)
   )
 end
+
+anil = User.create!(
+  email: "anil@anil.com",
+  password: "123456",
+  first_name: "Anil",
+  last_name: "Ekici",
+)
+
+tj = User.create!(
+  email: "tj@tj.com",
+  password: "123456",
+  first_name: "TJ",
+  last_name: "Hollins",
+)
+
+marta = User.create!(
+  email: "marta@marta.com",
+  password: "123456",
+  first_name: "Marta",
+  last_name: "Simas",
+)
+
+ardy = User.create!(
+  email: "ardy@ardy.com",
+  password: "123456",
+  first_name: "Ardy",
+  last_name: "Ardy",
+)
+name = Faker::Movies::StarWars.character
+Pot.create!(
+  owner: anil,
+  name: name,
+  description: Faker::Quote.yoda,
+  end_date: "20 Dec 2020",
+  chatroom: Chatroom.create(name: "#{name}'s Chatroom"),
+)
+
+UsersPot.create!(
+  user: tj,
+  pot: Pot.last,
+)
+UsersPot.create!(
+  user: marta,
+  pot: Pot.last,
+)
+UsersPot.create!(
+  user: ardy,
+  pot: Pot.last,
+)
