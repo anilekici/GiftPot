@@ -10,4 +10,11 @@ class Pot < ApplicationRecord
   has_many :contributions
 
   validates :name, presence: true
+
+  def days_remaining
+    date = Date.today
+    days_left = (self.end_date - date).to_i
+  end
+
 end
+

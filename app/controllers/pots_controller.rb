@@ -32,7 +32,7 @@ class PotsController < ApplicationController
   end
 
   def update
-    @pot.update(params[:pot])
+    @pot.update(pot_params)
   end
 
 
