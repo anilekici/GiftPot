@@ -20,6 +20,7 @@ class PotsController < ApplicationController
   def create
     @pot = Pot.new(pot_params)
     @pot.owner = current_user
+    @pot.chatroom = Chatroom.create(name: "#{@pot.name}'s Chatroom'")
 
     if @pot.save
       redirect_to pot_path(@pot.id), notice: "Well done!! You just created a POT"
