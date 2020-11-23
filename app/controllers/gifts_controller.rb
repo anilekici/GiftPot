@@ -40,7 +40,7 @@ class GiftsController < ApplicationController
   private
 
   def gift_params
-    params.require(:gift).permit(:pot_id, :name)
+    params.require(:gift).permit(:pot_id, :name, :price)
   end
 
   def set_gift
