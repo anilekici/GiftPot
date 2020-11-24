@@ -90,6 +90,7 @@ anil = User.create!(
   password: "123456",
   first_name: "Anil",
   last_name: "Ekici",
+  nickname: "Anıl"
 )
 
 tj = User.create!(
@@ -97,6 +98,7 @@ tj = User.create!(
   password: "123456",
   first_name: "TJ",
   last_name: "Hollins",
+  nickname: "TJ"
 )
 
 marta = User.create!(
@@ -104,6 +106,7 @@ marta = User.create!(
   password: "123456",
   first_name: "Marta",
   last_name: "Simas",
+  nickname: "Marta"
 )
 
 ardy = User.create!(
@@ -111,6 +114,7 @@ ardy = User.create!(
   password: "123456",
   first_name: "Ardy",
   last_name: "Ardy",
+  nickname: "Ardy"
 )
 name = Faker::Movies::StarWars.character
 Pot.create!(

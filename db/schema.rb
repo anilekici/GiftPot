@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2020_11_23_160827) do
   enable_extension "plpgsql"
 
   create_table "chatrooms", force: :cascade do |t|
-    t.string "name", null: false
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "pot_id", null: false
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 2020_11_23_160827) do
   end
 
   create_table "messages", force: :cascade do |t|
-    t.string "content", null: false
+    t.string "content"
     t.bigint "chatroom_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
