@@ -236,3 +236,54 @@ button {
 a {
 text-decoration: none;
 }
+
+.btn-y-sm {
+  display:inline-block;
+  padding:0.3em 1.2em;
+  // margin:10% 30%;
+  border:0.16em solid rgba(250, 250, 250, 0.63);
+  border-radius:5px;
+  box-sizing: border-box;
+  text-decoration:none;
+  color: white;
+  text-shadow: 0 0.04em 0.04em rgba(255, 255, 255, 0.35);
+  text-align:center;
+  transition: all 0.2s;
+  background-color:#FFD44A;
+  text-transform: uppercase;
+  height: 50px;
+}
+
+.btn-b-sm {
+  display:inline-block;
+  padding:0.3em 1.2em;
+  // margin:10% 30%;
+  border:0.16em solid rgba(250, 250, 250, 0.63);
+  border-radius:5px;
+  box-sizing: border-box;
+  text-decoration:none;
+  color: white;
+  text-shadow: 0 0.04em 0.04em rgba(255, 255, 255, 0.35);
+  text-align:center;
+  transition: all 0.2s;
+  background-color:#5267F8;
+  text-transform: uppercase;
+  height: 50px;
+}
+
+.btn-g-sm {
+  display:inline-block;
+  padding:0.3em 1.2em;
+  // margin:10% 30%;
+  border:0.16em solid rgba(250, 250, 250, 0.63);
+  border-radius:5px;
+  box-sizing: border-box;
+  text-decoration:none;
+  color: white;
+  text-shadow: 0 0.04em 0.04em rgba(255, 255, 255, 0.35);
+  text-align:center;
+  transition: all 0.2s;
+  background-color:#1EDD88;
+  text-transform: uppercase;
+  height: 50px;
+}
