@@ -2,6 +2,9 @@
   <h2><%= @pot.name.capitalize %>'s Pot</h2>
   <div class="card p-2">
     <h6><%= @pot.description %></h6>
+    <% unless @pot.owner == current_user %>
+    <%= link_to "Join Pot", join_path(@pot), method: :post, class: "btn btn-primary" %>
+    <% end %>
     <% if @pot.days_remaining == 0 %>
     <h3> Today is the Event day </h3>
     <% elsif @pot.days_remaining > 0 %>
@@ -78,6 +81,6 @@
 </div>
 
 <%= link_to "Contribute", new_pot_contribution_path(@pot), class: "btn btn-primary" %>
-<%= link_to "Chat", chatroom_path(@pot.chatroom.id), class: "chat-btn" %>
+<%= link_to "Chat", chatroom_path(@pot.chatroom.id), class: "btn btn-primary" %>
 
 

@@ -1,6 +1,6 @@
 class PotsController < ApplicationController
 
-  before_action :set_pot, only: [:show, :edit, :update, :destroy]
+  before_action :set_pot, only: [:show, :edit, :update, :destroy, :join]
 
   def index
     @pots = Pot.all
@@ -41,7 +41,16 @@ class PotsController < ApplicationController
     redirect_to dashboard_path
   end
 
-
+  def join
+    @user = current_user
+    if @pot.users.include? @user
+      redirect_to pot_path(@pot), alert: "You already a member of this pot"
+    else
+      @users_pot = UsersPot.create(pot: @pot, user: @user)
+      @users_pot.save
+      redirect_to pot_path(@pot), notice: "You successfully joined this pot"
+    end
+  end
 
   private
 
