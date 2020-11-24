@@ -23,11 +23,6 @@ ActiveRecord::Schema.define(version: 2020_11_24_163456) do
     t.index ["pot_id"], name: "index_chatrooms_on_pot_id"
   end
 
-  create_table "checkouts", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "contributions", force: :cascade do |t|
     t.string "contribution_sku"
     t.integer "amount_cents", default: 0, null: false
@@ -59,7 +54,7 @@ ActiveRecord::Schema.define(version: 2020_11_24_163456) do
   end
 
   create_table "messages", force: :cascade do |t|
-    t.string "content", null: false
+    t.string "content"
     t.bigint "chatroom_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
