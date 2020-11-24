@@ -34,5 +34,7 @@ Rails.application.routes.draw do
 
   post 'pots/:id/join', to: "pots#join", as: "join"
 
+  get 'pots/:id/leave', to: "pots#leave", as: "leave"
+
 end
 
