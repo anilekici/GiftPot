@@ -66,10 +66,9 @@ class PotsController < ApplicationController
     @user = current_user
     set_pot
     if @pot.users.include? @user
-      #unsure how to find the specific instance of users_pot to delete it.
       @users_pot = UsersPot.find_by user: current_user
       @users_pot.destroy
-      redirect_to pot_path(@pot), notice: "You successfully left this pot"
+      redirect_to dashboard_path, notice: "You successfully left #{@pot.name}"
     else
       redirect_to pot_path(@pot), alert: "You aren't a member of this pot"
     end
