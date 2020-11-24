@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   has_many :owned_pots, class_name: 'Pot'
 
-  has_many :users_pots
+  has_many :users_pots, dependent: :destroy
   has_many :pots, through: :users_pots
 
   has_many :contributions
