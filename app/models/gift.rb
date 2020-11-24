@@ -1,6 +1,6 @@
 class Gift < ApplicationRecord
   belongs_to :pot
-  has_many :gift_votes
+  has_many :gift_votes, dependent: :destroy
 
   validates :name, :price, presence: true
 
