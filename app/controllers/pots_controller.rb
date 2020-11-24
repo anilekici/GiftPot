@@ -10,6 +10,7 @@ class PotsController < ApplicationController
     @first_gift = @pot.gifts.first
     # @ordered_gifts = @pot.gifts.joins(:gift_votes).group(:id, :gift_votes).order(:gift_votes)
     @ordered_gifts = @pot.gifts.left_joins(:gift_votes).group(:id).select('gifts.*', 'COUNT(gift_votes.id) vote_count').order('vote_count DESC')
+    @winner_gift = @ordered_gifts.first
     @gift = Gift.new
   end
 
@@ -36,6 +37,7 @@ class PotsController < ApplicationController
     @pot.update(pot_params)
   end
 
+  
 
   private
 
