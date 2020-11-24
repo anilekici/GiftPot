@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   resources :pots, except: [:destroy] do
-
+    get '/thankyou', to: 'pages#thankyou'
     resources :gifts, only: [:new, :create, :destroy]
     member do
 
@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     end
   end
   resources :gifts, only: [:edit, :update, :destroy]
-  
+
   resources :chatrooms, only: [:show, :index] do
     resources :messages, only: :create
   end
