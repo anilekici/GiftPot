@@ -47,6 +47,7 @@
             <h2><%= pot.name %> </h2>
             <p><%= pot.end_date.strftime("%d %b %Y") %> - <strong>€<%= pot.total_amount/100 %></strong> raised</p>
           </div>
+
         <button class= "card-pot-delete-btn">
           <%= link_to pot_path(pot), method: :delete, data:{confirm: "Are You Sure?"} do %>
             <i class="fa fa-trash-alt"></i>
@@ -63,7 +64,7 @@
       <ul>
         <li><%="You're not taking part in any pots" %> </li>
       </ul>
-      <% end %>
+    <% end %>
       </div>
 
   <div class= "container-btn-submit row justify-content-center">

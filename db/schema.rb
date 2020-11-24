@@ -10,17 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_23_160827) do
+ActiveRecord::Schema.define(version: 2020_11_24_163456) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "chatrooms", force: :cascade do |t|
-    t.string "name", null: false
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "pot_id", null: false
     t.index ["pot_id"], name: "index_chatrooms_on_pot_id"
+  end
+
+  create_table "checkouts", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "contributions", force: :cascade do |t|
@@ -73,6 +78,7 @@ ActiveRecord::Schema.define(version: 2020_11_23_160827) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "total_amount", default: 0
+    t.boolean "active", default: true, null: false
     t.index ["user_id"], name: "index_pots_on_user_id"
   end
 
