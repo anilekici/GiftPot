@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   resources :pots do
     get '/thankyou', to: 'pages#thankyou'
+  end
 
     resources :gifts, only: [:new, :create, :destroy]
     member do
