@@ -15,16 +15,28 @@ h3 {
 
 .my-message-container {
     text-align: right;
+    word-wrap: break-word;
 }
 
 span {
     background-color: white;
     padding: 6px 11px 6px 11px;
     border-radius: 5px;
+    margin-right: 5px;
 }
 
 small {
     text-align: right;
     font-size: x-small;
     color: grey;
+}
+
+#new_message {
+  padding: 1rem;
+  border-top: 1px solid $gray-200;
+
+  .form-group {
+    margin-bottom: 0;
+    position: sticky;
+  }
 }

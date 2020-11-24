@@ -6,7 +6,7 @@
     <% end %>
 
   <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
-    <%= f.input :content, label: false, placeholder: "Type a message", input_html: { autocomplete: "off", autofocus: "autofocus"} %>
+    <%= f.input :content, label: false, placeholder: "Type a message", input_html: { autocomplete: "off", autofocus: "autofocus" } %>
   <% end %>
   </div>
 </div>
