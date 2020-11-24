@@ -3,8 +3,15 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
+
+  resources :pots, except: [:destroy] do
+    member do
+      patch "/finish", to: "pots#finish"
+    end
+
   resources :pots do
     get '/thankyou', to: 'pages#thankyou'
+
     resources :gifts, only: [:new, :create, :destroy]
     member do
 
@@ -21,5 +28,6 @@ Rails.application.routes.draw do
     resources :messages, only: :create
   end
   get '/dashboard', to: 'pages#dashboard'
+
 end
 

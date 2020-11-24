@@ -37,6 +37,11 @@ class GiftsController < ApplicationController
     redirect_to pot_path(@pot)
   end
 
+  def winning_gift
+    
+  end
+
+
   private
 
   def gift_params
