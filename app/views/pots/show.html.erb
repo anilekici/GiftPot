@@ -27,15 +27,21 @@
   <% else %>
     <div class="card p-2">
       <h6><%= @pot.description %></h6>
-      <% unless @pot.owner == current_user %>
-      <%= link_to "Join Pot", join_path(@pot), method: :post, class: "btn btn-primary" %>
-      <% end %>
+
       <% if @pot.days_remaining == 0 %>
       <h3> Today is the Event day </h3>
       <% elsif @pot.days_remaining > 0 %>
       <h6><%= @pot.days_remaining %> Days left </h6>
       <% end %>
       <h3><strong>€<%= @pot.total_amount/100 %> raised </strong><h3>
+
+      <% unless @pot.owner == current_user %>
+        <% if @pot.users.include? current_user %>
+          <%= link_to "Leave Pot", leave_path(@pot), method: :get, class: "btn btn-primary" %>
+        <% else %>
+          <%= link_to "Join Pot", join_path(@pot), method: :post, class: "btn btn-primary" %>
+        <% end %>
+      <% end %>
     </div>
     <ul class="list-group">
       <% @ordered_gifts.each do |gift| %>
