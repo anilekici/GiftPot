@@ -1,8 +1,6 @@
 class PotsController < ApplicationController
 
-
   before_action :set_pot, only: [:show, :edit, :update, :destroy, :finish, :join]
-
 
   def index
     @pots = Pot.all
@@ -62,6 +60,11 @@ class PotsController < ApplicationController
     end
   end
 
+  def destroy
+    @pot.destroy
+    redirect_to dashboard_path
+  end
+  
   def leave
     @user = current_user
     set_pot

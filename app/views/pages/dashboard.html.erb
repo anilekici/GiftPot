@@ -47,16 +47,16 @@
             <h2><%= pot.name %> </h2>
             <p><%= pot.end_date.strftime("%d %b %Y") %> - <strong>€<%= pot.total_amount/100 %></strong> raised</p>
           </div>
-          <button class= "card-pot-delete-btn">
-            <% @pot = pot %>
-          <%= link_to leave_path(@pot), method: :get, data:{confirm: "Are You Sure?"} do %>
-          <i class="fa fa-trash-alt"></i>
+
+        <button class= "card-pot-delete-btn">
+          <%= link_to pot_path(pot), method: :delete, data:{confirm: "Are You Sure?"} do %>
+            <i class="fa fa-trash-alt"></i>
           <% end %>
 
-          </button>
-          <button class= "card-pot-btn"><%= link_to "Pot", pot_path(pot) %></button>
+        </button>
+        <button class= "card-pot-btn"><%= link_to "Pot", pot_path(pot) %></button>
 
-          </div>
+        </div>
       </div>
       <%end %>
     <% else %>
