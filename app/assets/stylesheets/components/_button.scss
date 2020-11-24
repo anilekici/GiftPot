@@ -231,8 +231,15 @@ button {
   text-transform: uppercase;
   transition: all 0.2s;
   box-sizing: border-box;
+  right: 60px;
 }
 
 a {
 text-decoration: none;
 }
+
+.card-pot-delete-btn {
+    color: red;
+}
+
+
