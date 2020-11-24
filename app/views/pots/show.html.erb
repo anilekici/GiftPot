@@ -1,13 +1,18 @@
 <div class="container text-center my-3">
   <h2><%= @pot.name.capitalize %>'s Pot</h2>
-  <% if @pot.end_date < Date.today %>
+  <%# <% if @pot.end_date < Date.today %>
+  <% if @pot.active == false %>
   <div class="card p-2">
     <h3> Took place on <%= @pot.end_date.strftime("%d %b %Y") %></h3>
     <h3> Total raised <strong>€<%= @pot.total_amount/100 %></h3>
   </div>
   <div class="card p-2">
     <h3> The winning gift</h3>
+    <% if @winner_gift != nil %>
     <h3> <strong><%= @winner_gift.name %></strong> with <strong><%= @winner_gift.votes %></strong> votes.</h3>
+    <% else %>
+    <h3> NO GIFTS :( </h3>
+    <% end %>
   </div>
   <%= link_to "Chat", chatroom_path(@pot.chatroom.id), class: "btn-g-sm" %>
   <% else %>
@@ -90,6 +95,7 @@
     </div>
     <%= link_to "Contribute", new_pot_contribution_path(@pot), class: "btn-y-sm" %>
     <%= link_to "Chat", chatroom_path(@pot.chatroom.id), class: "btn-g-sm" %>
+    <%= link_to "Finish", finish_pot_path(@pot), class: "btn-y-sm", method: "patch" %>
   <% end %>
 </div>
 

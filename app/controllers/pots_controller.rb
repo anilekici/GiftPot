@@ -1,6 +1,6 @@
 class PotsController < ApplicationController
 
-  before_action :set_pot, only: [:show, :edit, :update]
+  before_action :set_pot, only: [:show, :edit, :update, :finish]
 
   def index
     @pots = Pot.all
@@ -17,12 +17,12 @@ class PotsController < ApplicationController
   def new
     @pot = Pot.new
   end
-
+  
   def create
     @pot = Pot.new(pot_params)
     @pot.owner = current_user
     @pot.chatroom = Chatroom.create(name: "#{@pot.name}'s Chatroom")
-
+    
     if @pot.save
       redirect_to pot_path(@pot.id), notice: "Well done!! You just created a POT"
     else
@@ -30,17 +30,22 @@ class PotsController < ApplicationController
     end
   end
 
-  def edit
-  end
-
-  def update
-    @pot.update(pot_params)
-  end
-
+  # def edit
+  # end
   
-
+  # def update
+  #   @pot.update(pot_params)
+  # end
+  
+  def finish
+    @pot.active = false
+    @pot.save
+    redirect_to pot_path(@pot)
+  end
+  
+  
   private
-
+  
   def pot_params
     params.require(:pot).permit(:name, :description, :min_amount, :end_date, :owner)
   end
