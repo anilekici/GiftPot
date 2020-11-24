@@ -3,6 +3,16 @@
   <%# <% if @pot.end_date < Date.today %>
   <% if @pot.active == false %>
   <div class="card p-2">
+
+    <h6><%= @pot.description %></h6>
+    <% unless @pot.owner == current_user %>
+    <%= link_to "Join Pot", join_path(@pot), method: :post, class: "btn btn-primary" %>
+    <% end %>
+    <% if @pot.days_remaining == 0 %>
+    <h3> Today is the Event day </h3>
+    <% elsif @pot.days_remaining > 0 %>
+    <h6><%= @pot.days_remaining %> Days left </h6>
+
     <h3> Took place on <%= @pot.end_date.strftime("%d %b %Y") %></h3>
     <h3> Total raised <strong>€<%= @pot.total_amount/100 %></h3>
   </div>
@@ -10,6 +20,7 @@
     <h3> The winning gift</h3>
     <% if @winner_gift != nil %>
     <h3> <strong><%= @winner_gift.name %></strong> with <strong><%= @winner_gift.votes %></strong> votes.</h3>
+
     <% else %>
     <h3> NO GIFTS :( </h3>
     <% end %>
@@ -98,6 +109,5 @@
     <%= link_to "Finish", finish_pot_path(@pot), class: "btn-y-sm", method: "patch" %>
   <% end %>
 </div>
-
 
 
