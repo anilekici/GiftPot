@@ -222,16 +222,17 @@ button {
 }
 
 .card-pot-btn {
-  display:inline-block;
-  border-radius:3px;
-  background-color: #1EDD88;
-  text-decoration:none;
+  display: inline-block;
+  border-radius: 3px;
+  background-color: red;
+  text-decoration: none;
   color: white;
   text-align: center;
   text-transform: uppercase;
   transition: all 0.2s;
   box-sizing: border-box;
   right: 60px;
+  padding: 5px;
 }
 
 a {
