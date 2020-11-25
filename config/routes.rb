@@ -7,10 +7,10 @@ Rails.application.routes.draw do
     member do
       patch "/finish", to: "pots#finish"
     end
+  end
 
   resources :pots do
     get '/thankyou', to: 'pages#thankyou'
-  end
 
     resources :gifts, only: [:new, :create, :destroy]
     member do
