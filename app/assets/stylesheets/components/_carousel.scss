@@ -11,6 +11,21 @@
 .carousel-inner .carousel-item-next,
 .carousel-inner .carousel-item-prev {
     display: flex;
+    min-height: 200px;
+
+    .card {
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .btn{
+      width: 100px;
+
+    }
 }
 
 /* display 3 */

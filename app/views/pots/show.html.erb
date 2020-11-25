@@ -54,25 +54,10 @@
           <% if @pot.gifts.any? %>
           <div id="recipeCarousel" class="carousel slide w-100" data-ride="carousel">
             <div class="carousel-inner w-100" role="listbox">
-              <div class="carousel-item active">
+              <% @pot.gifts.each_with_index do |gift, index| %>
+              <div class="carousel-item <%= index.zero? ? 'active' : '' %>">
                 <div class="col-md-4">
-                  <div class="card card-body">
-                    <%= @first_gift.name %>
-                    Votes: <%= @first_gift.votes %>
-                    <% if current_user.has_voted_in_pot?(@pot) %>
-                      <% if current_user.has_voted?(@first_gift) %>
-                        <%= link_to "Cancel", downvote_pot_path(@pot, @first_gift), class: "btn btn-primary", method: :post %>
-                      <% end %>
-                    <% else %>
-                      <%= link_to "Vote", upvote_pot_path(@pot, @first_gift), class: "btn btn-primary", method: :post %>
-                    <% end %>
-                  </div>
-                </div>
-              </div>
-              <% @pot.gifts.offset(1).each do |gift| %>
-              <div class="carousel-item" class=>
-                <div class="col-md-4">
-                  <div class="card card-body">
+                  <div class="card card-body" style="background-image: url(<%= gift.photos.first.service_url if gift.photos.any? %>)">
                     <%= gift.name %>
                     <% if current_user.has_voted_in_pot?(@pot) %>
                       <% if current_user.has_voted?(gift) %>
