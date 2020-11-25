@@ -105,13 +105,17 @@
           <% else %>
             <% if @pot.owner == current_user %>
               <%= render 'shared/gift_form' %>
+              <div class="container mt-2">
+                <%= link_to "Finish", finish_pot_path(@pot), class: "btn-g-sm" %>
+                <%= link_to "Chat", chatroom_path(@pot.chatroom.id), class: "btn-g-sm" %>
+              </div>
             <% else %>
               <h3> NO GIFTS yet :( </h3>
+              <div class="container mt-2">
+                <%= link_to "Leave", leave_path(@pot), class: "btn-g-sm" %>
+                <%= link_to "Chat", chatroom_path(@pot.chatroom.id), class: "btn-g-sm" %>
+              </div>
             <% end %>
-          <div class="container mt-2">
-            <%= link_to "Leave", leave_path(@pot), class: "btn-g-sm" %>
-            <%= link_to "Chat", chatroom_path(@pot.chatroom.id), class: "btn-g-sm" %>
-          </div>
           <% end %>
       </div>
   <% end %>
