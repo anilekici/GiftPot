@@ -1,70 +1,72 @@
 <div class="container text-center my-3">
+  <div class="d-flex">
+  <%= link_to '<i class="fas fa-arrow-left" style="color:black"></i>'.html_safe, dashboard_path  %>
+  </div>
   <h2><%= @pot.name.capitalize %></h2>
   <% if @pot.active == false %>
-    <div class="card p-2">
+    <div class="card p-2 pink">
       <h6><%= @pot.description %></h6>
       <h3> Gift Date ➼ <%= @pot.end_date.strftime("%d %b %Y") %></h3>
-      <h3> Total raised: <strong>€<%= @pot.total_amount/100 %></strong></h3>
+      <h2> Total raised: <strong><%= @pot.total_amount/100 %>€</strong></h2>
     </div>
-    <div class="card p-2 mt-2">
-      <h3> The winning gift</h3>
+    <div class="card p-2 mt-2 pink">
       <% if @winner_gift != nil %>
-      <h3> <strong><%= @winner_gift.name %></strong> with <strong><%= @winner_gift.votes %></strong> votes.</h3>
+      <h3> The winning gift 🎁</h3>
+      <h2> <strong><%= @winner_gift.name %></strong> with <strong><%= @winner_gift.votes %></strong> votes.</h2>
       <% else %>
-      <h3> NO GIFTS :( </h3>
+      <h2> NO GIFTS 😥</h2>
       <% end %>
     </div>
     <div class="container mt-2">
-      <%= link_to "Chat", chatroom_path(@pot.chatroom.id), class: "btn-g-sm" %>
-      <%= link_to "Dashboard", dashboard_path, class: "btn-g-sm" %>
+      <%= link_to "Chat", chatroom_path(@pot.chatroom.id), class: "btn-sm bgg" %>
     </div>
   <% else %>
-    <div class="card p-2">
+    <div class="card-pot p-2">
       <h6><%= @pot.description %></h6>
 
       <% if @pot.days_remaining == 0 %>
       <h3> Today is the Event day </h3>
       <% elsif @pot.days_remaining > 0 %>
-      <h6><%= @pot.days_remaining %> Days left </h6>
+      <h6>Date: <%= @pot.end_date.strftime("%d %b %Y")%> ➼ <strong><%= @pot.days_remaining %> Days left</strong> </h6>
       <% end %>
 
-      <h3><strong>€<%= @pot.total_amount/100 %> raised </strong><h3>
+      <h2><strong><%= @pot.total_amount/100 %>€ raised </strong><h2>
 
       <% unless Contribution.where(user: current_user, pot: @pot).exists? %>
-        <%= link_to "Contribute", new_pot_contribution_path(@pot), class: "btn-g-sm" %>
+        <%= link_to "Contribute", new_pot_contribution_path(@pot), class: "btn-sm bgg" %>
       <% else %>
         <h3><strong>€<%= @contribution.amount_cents/100 %> contributed by <%= @user.first_name %></strong><h3>
       <% end %>
     </div>
     <ul class="list-group">
       <% @ordered_gifts.each do |gift| %>
-      <li class="list-group-item d-flex justify-content-between align-items-center">
+      <li class="list-group-item d-flex justify-content-between align-items-center mt-1 card-pot orange">
         <span class="badge badge-primary badge-pill">Votes: <%= gift.votes %></span>
         <%= gift.name.capitalize %> - €<%= gift.price %>
         <% if @pot.owner == current_user %>
-        <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe, gift_path(gift), method: :delete %>
+        <%= link_to '<i class="fas fa-trash" style="color:white"></i>'.html_safe, gift_path(gift), method: :delete %>
         <% end %>
       </li>
       <% end %>
     </ul>
 
       <div class="container text-center my-3">
-        <h2 class="font-weight-light">Gift Options</h2>
+        <h2 class="font-weight-light"><strong>Gift Options</strong></h2>
         <div class="col-md-4 col-md-offset-4">
           <% if @pot.gifts.any? %>
           <div id="recipeCarousel" class="carousel slide w-100" data-ride="carousel">
             <div class="carousel-inner w-100" role="listbox">
               <div class="carousel-item active">
                 <div class="col-md-4">
-                  <div class="card card-body">
-                    <%= @first_gift.name %>
-                    Votes: <%= @first_gift.votes %>
+                  <div class="card card-body yellow">
+                    <h2><%= @first_gift.name %></h2>
+                    <%# Votes: <%= @first_gift.votes %>
                     <% if current_user.has_voted_in_pot?(@pot) %>
                       <% if current_user.has_voted?(@first_gift) %>
-                        <%= link_to "Cancel", downvote_pot_path(@pot, @first_gift), class: "btn btn-primary", method: :post %>
+                        <%= link_to "Cancel", downvote_pot_path(@pot, @first_gift), class: "btn-sm bgp", method: :post %>
                       <% end %>
                     <% else %>
-                      <%= link_to "Vote", upvote_pot_path(@pot, @first_gift), class: "btn btn-primary", method: :post %>
+                      <%= link_to "Vote", upvote_pot_path(@pot, @first_gift), class: "btn-sm bgg", method: :post %>
                     <% end %>
                   </div>
                 </div>
@@ -72,14 +74,14 @@
               <% @pot.gifts.offset(1).each do |gift| %>
               <div class="carousel-item" class=>
                 <div class="col-md-4">
-                  <div class="card card-body">
-                    <%= gift.name %>
+                  <div class="card card-body yellow">
+                    <h2><%= gift.name %></h2>
                     <% if current_user.has_voted_in_pot?(@pot) %>
                       <% if current_user.has_voted?(gift) %>
-                        <%= link_to "Cancel", downvote_pot_path(@pot, gift), class: "btn btn-primary", method: :post %>
+                        <%= link_to "Cancel", downvote_pot_path(@pot, gift), class: "btn-sm bgp", method: :post %>
                       <% end %>
                     <% else %>
-                      <%= link_to "Vote", upvote_pot_path(@pot, gift), class: "btn btn-primary", method: :post %>
+                      <%= link_to "Vote", upvote_pot_path(@pot, gift), class: "btn-sm bgg", method: :post %>
                     <% end %>
                   </div>
                 </div>
@@ -97,20 +99,42 @@
           </div>
             <% if @pot.owner == current_user %>
               <div class="container mt-2">
-                <%= link_to "Finish", finish_pot_path(@pot), class: "btn-g-sm" %>
-                <%= link_to "Chat", chatroom_path(@pot.chatroom.id), class: "btn-g-sm" %>
+                <%= link_to "Finish", finish_pot_path(@pot), class: "btn-sm bgp" %>
+                <%= link_to "Chat", chatroom_path(@pot.chatroom.id), class: "btn-sm bgp" %>
               </div>
-              <%= render 'shared/gift_form' %>
+              <p>
+              <a class="btn-sm bgp" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                Add a Gift
+              </a>
+              </p>
+            <div class="collapse" id="collapseExample">
+            <div>
+            <%= render 'shared/gift_form' %> 
+            </div>
+            </div>
+          </div>
             <% end %>
           <% else %>
             <% if @pot.owner == current_user %>
-              <%= render 'shared/gift_form' %>
+              <p>
+              <a class="btn-sm bgp" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                Add a Gift
+              </a>
+              </p>
+            <div class="collapse" id="collapseExample">
+            <div>
+            <%= render 'shared/gift_form' %> 
+            </div>
+            </div>
             <% else %>
               <h3> NO GIFTS yet :( </h3>
             <% end %>
           <div class="container mt-2">
-            <%= link_to "Leave", leave_path(@pot), class: "btn-g-sm" %>
-            <%= link_to "Chat", chatroom_path(@pot.chatroom.id), class: "btn-g-sm" %>
+            <%= link_to "Leave", leave_path(@pot), class: "btn-sm bgb" %>
+            <%= link_to "Chat", chatroom_path(@pot.chatroom.id), class: "btn-sm bgb" %>
+          </div>
+          <p>
+            </div>
           </div>
           <% end %>
       </div>

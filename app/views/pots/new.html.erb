@@ -7,12 +7,12 @@
         </span>
         <div>
           <%= simple_form_for(@pot)do |f| %>
-            <%= f.input :name, label: "Pot name", placeholder: "Ardi´s new Laptop", input_html: { autocomplete: "off"} %>
+            <%= f.input :name, label: "Pot name", placeholder: "Le Wagon Living Drinks", input_html: { autocomplete: "off"} %>
             <%= f.input :end_date, as: :string, placeholder: "DD/MM/YYYY", label: "Pot closing date:".html_safe, input_html: { class: "datepicker" } %>
-            <%= f.input :description, label: "Description:", placeholder: "His laptop is broken and he needs a new laptop", input_html: { autocomplete: "off"} %>
+            <%= f.input :description, label: "Description:", placeholder: "Lets prepare a great living party for Lisbon batch #459 BEER & PROSECCO", input_html: { autocomplete: "off"} %>
             <%= f.input :min_amount, label: "Minimum contribution:" %>
             <div class= "container-btn-submit">
-              <%= f.submit "Create Pot", class: "btn-p mt-3" %>
+              <%= f.submit "Create Pot", class: "btn-bg bgp mt-3" %>
             </div>
           <% end %>
         </div>
