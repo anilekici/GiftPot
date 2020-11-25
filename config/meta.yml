@@ -1,0 +1,5 @@
+meta_product_name: "GiftPot"
+meta_title: "GiftPot - The hassle-free solution to aggregate contributions towards quality gifts for friends, family or colleagues"
+meta_description: "An application allowing contirbutions for a gift to be aggregrated and paid out with minimal hassle to the organiser or contributors."
+meta_image: "logo.png" # should exist in `app/assets/images/`
+twitter_account: "@product_twitter_account"
