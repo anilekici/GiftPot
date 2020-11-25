@@ -1,21 +1,12 @@
 <div class="container text-center my-3">
-  <h2><%= @pot.name.capitalize %>'s Pot</h2>
-  <%# <% if @pot.end_date < Date.today %>
+  <h2><%= @pot.name.capitalize %></h2>
   <% if @pot.active == false %>
     <div class="card p-2">
       <h6><%= @pot.description %></h6>
-
-
-      <% if @pot.days_remaining == 0 %>
-      <h3> Today is the Event day </h3>
-      <% elsif @pot.days_remaining > 0 %>
-      <h6><%= @pot.days_remaining %> Days left </h6>
-      <% end %>
-
-      <h3> Took place on <%= @pot.end_date.strftime("%d %b %Y") %></h3>
-      <h3> Total raised <strong>€<%= @pot.total_amount/100 %></h3>
+      <h3> Gift Date ➼ <%= @pot.end_date.strftime("%d %b %Y") %></h3>
+      <h3> Total raised: <strong>€<%= @pot.total_amount/100 %></strong></h3>
     </div>
-    <div class="card p-2">
+    <div class="card p-2 mt-2">
       <h3> The winning gift</h3>
       <% if @winner_gift != nil %>
       <h3> <strong><%= @winner_gift.name %></strong> with <strong><%= @winner_gift.votes %></strong> votes.</h3>
@@ -23,7 +14,10 @@
       <h3> NO GIFTS :( </h3>
       <% end %>
     </div>
-    <%= link_to "Chat", chatroom_path(@pot.chatroom.id), class: "btn-g-sm" %>
+    <div class="container mt-2">
+      <%= link_to "Chat", chatroom_path(@pot.chatroom.id), class: "btn-g-sm" %>
+      <%= link_to "Dashboard", dashboard_path, class: "btn-g-sm" %>
+    </div>
   <% else %>
     <div class="card p-2">
       <h6><%= @pot.description %></h6>
@@ -33,14 +27,13 @@
       <% elsif @pot.days_remaining > 0 %>
       <h6><%= @pot.days_remaining %> Days left </h6>
       <% end %>
+
       <h3><strong>€<%= @pot.total_amount/100 %> raised </strong><h3>
 
-      <% unless @pot.owner == current_user %>
-        <% if @pot.users.include? current_user %>
-          <%= link_to "Leave Pot", leave_path(@pot), method: :get, class: "btn btn-primary" %>
-        <% else %>
-          <%= link_to "Join Pot", join_path(@pot), method: :post, class: "btn btn-primary" %>
-        <% end %>
+      <% if current_user.contributions.first == nil %>
+        <%= link_to "Contribute", new_pot_contribution_path(@pot), class: "btn-g-sm" %>
+      <% else %>
+        <h3><strong>€<%= current_user.contributions.first.monetize %> raised </strong><h3>
       <% end %>
     </div>
     <ul class="list-group">
@@ -67,11 +60,11 @@
                     <%= @first_gift.name %>
                     Votes: <%= @first_gift.votes %>
                     <% if current_user.has_voted_in_pot?(@pot) %>
-                    <% if current_user.has_voted?(@first_gift) %>
-                    <%= link_to "Cancel", downvote_pot_path(@pot, @first_gift), class: "btn btn-primary", method: :post %>
-                    <% end %>
+                      <% if current_user.has_voted?(@first_gift) %>
+                        <%= link_to "Cancel", downvote_pot_path(@pot, @first_gift), class: "btn btn-primary", method: :post %>
+                      <% end %>
                     <% else %>
-                    <%= link_to "Vote", upvote_pot_path(@pot, @first_gift), class: "btn btn-primary", method: :post %>
+                      <%= link_to "Vote", upvote_pot_path(@pot, @first_gift), class: "btn btn-primary", method: :post %>
                     <% end %>
                   </div>
                 </div>
@@ -82,11 +75,11 @@
                   <div class="card card-body">
                     <%= gift.name %>
                     <% if current_user.has_voted_in_pot?(@pot) %>
-                    <% if current_user.has_voted?(gift) %>
-                    <%= link_to "Cancel", downvote_pot_path(@pot, gift), class: "btn btn-primary", method: :post %>
-                    <% end %>
+                      <% if current_user.has_voted?(gift) %>
+                        <%= link_to "Cancel", downvote_pot_path(@pot, gift), class: "btn btn-primary", method: :post %>
+                      <% end %>
                     <% else %>
-                    <%= link_to "Vote", upvote_pot_path(@pot, gift), class: "btn btn-primary", method: :post %>
+                      <%= link_to "Vote", upvote_pot_path(@pot, gift), class: "btn btn-primary", method: :post %>
                     <% end %>
                   </div>
                 </div>
@@ -103,17 +96,24 @@
             </div>
           </div>
             <% if @pot.owner == current_user %>
-            <%= render 'shared/gift_form' %>
+              <div class="container mt-2">
+                <%= link_to "Finish", finish_pot_path(@pot), class: "btn-g-sm" %>
+                <%= link_to "Chat", chatroom_path(@pot.chatroom.id), class: "btn-g-sm" %>
+              </div>
+              <%= render 'shared/gift_form' %>
             <% end %>
           <% else %>
             <% if @pot.owner == current_user %>
-            <%= render 'shared/gift_form' %>
+              <%= render 'shared/gift_form' %>
+            <% else %>
+              <h3> NO GIFTS yet :( </h3>
             <% end %>
+          <div class="container mt-2">
+            <%= link_to "Leave", leave_path(@pot), class: "btn-g-sm" %>
+            <%= link_to "Chat", chatroom_path(@pot.chatroom.id), class: "btn-g-sm" %>
+          </div>
           <% end %>
-        </div>
-        <%= link_to "Contribute", new_pot_contribution_path(@pot), class: "btn-y-sm" %>
-        <%= link_to "Chat", chatroom_path(@pot.chatroom.id), class: "btn-g-sm" %>
-        <%= link_to "Finish", finish_pot_path(@pot), class: "btn-y-sm", method: "patch" %>
+      </div>
   <% end %>
 </div>
 

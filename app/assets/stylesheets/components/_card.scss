@@ -30,6 +30,7 @@
   background:  #ffd54ad2;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   margin: 10px;
+  text-align: center;
 }
 
 .card-pot h2 {
@@ -47,17 +48,9 @@
 }
 
 .card-pot .card-pot-infos {
-  padding: 16px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  position: relative;
+  padding-top: 4px;
 }
 
-.card-pot .card-pot-btn {
-  position: absolute;
-  // right: 16px;
-  // top: -20px;
-  width: 40px;
-  justify-content: space-between;
+.card-pot .card-pot-infos:hover {
+  opacity: 0.2;
 }

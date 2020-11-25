@@ -1,5 +1,6 @@
 <div class="container text-center my-3">
   <h3><%= @chatroom.name %></h3>
+  <%= link_to "Back to Pot", pot_path(@chatroom.pot), class: "btn btn-primary fixed-top"%>
   <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
     <% @chatroom.messages.each do |message| %>
       <%= render 'messages/message', message: message %>
