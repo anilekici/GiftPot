@@ -1,69 +1,62 @@
+<h2 class= "dash-title"> My Pots</h2>
 
-    <h2 class= "dash-title"> My Pots</h2>
+<h3 class= "text-center"> Owned Pots </h3>
 
-  <h3 class= "text-center"> Pots Where I'm the Leader </h3>
-
-  <% if @user.owned_pots.count != 0 %>
+<% if @user.owned_pots.count != 0 %>
   <% @user.owned_pots.each do |pot| %>
-  <div class="card-pot">
-    <div class="card-pot-infos">
-      <div>
-        <h2><%= pot.name %> </h2>
-        <p><%= pot.end_date.strftime("%d %b %Y") %> - <strong>€<%= pot.total_amount/100 %></strong> raised</p>
+    <%= link_to pot_path(pot) do %>
+    <div class="card-pot">
+      <div class="card-pot-infos">
+        <div>
+          <h2><%= pot.name %> </h2>
+          <p><%= pot.end_date.strftime("%d %b %Y") %> - <strong>€<%= pot.total_amount/100 %></strong> raised</p>
+        </div>
       </div>
-      <button class= "card-pot-delete-btn">
-          <%= link_to finish_pot_path(pot), method: "patch", data:{confirm: "Do you confirm finishing the pot?"} do %>
-            <i class="fas fa-check-circle"></i>
-          <% end %>
-      </button>
-      <button class= "card-pot-btn"><%= link_to "Enter", pot_path(pot) %></button>
-
+        <button class= "card-pot-delete-btn">
+            <%= link_to finish_pot_path(pot), method: "patch", data:{confirm: "Do you confirm finishing the pot?"} do %>
+              <i class="fas fa-check-circle"></i>
+            <% end %>
+        </button>
     </div>
+    <% end %>
+  <% end %>
+<% else %>
+  <div class="flash flash-warning alert alert-dismissible fade show" role="alert">
+    <span>You're not leading any pots! 💰 <%= link_to "Create Pot now!", new_pot_path %></span>
+    <a data-dismiss="alert" aria-label="Close">
+      <i class="fas fa-times"></i>
+    </a>
   </div>
-  <% end %>
-  <% else %>
-    <div class="flash flash-warning alert alert-dismissible fade show" role="alert">
-      <span>You're not leading any pots! 💰 <%= link_to "Create Pot now!", new_pot_path %></span>
-      <a data-dismiss="alert" aria-label="Close">
-        <i class="fas fa-times"></i>
-      </a>
-    </div>
-  <% end %>
+<% end %>
 
+<h3 class= "text-center"> Joined Pots </h3>
 
-
-
-<h3 class= "text-center"> Pots Where I'm a Member </h3>
-
-
-
-
-    <% if @user.pots.count != 0 %>
-      <% @user.pots.each do |pot| %>
-      <div class="card-pot">
-        <div class="card-pot-infos">
-          <div>
-            <h2><%= pot.name %> </h2>
-            <p><%= pot.end_date.strftime("%d %b %Y") %> - <strong>€<%= pot.total_amount/100 %></strong> raised</p>
-          </div>
+<% if @user.pots.count != 0 %>
+  <% @user.pots.each do |pot| %>
+    <%= link_to pot_path(pot) do %>
+    <div class="card-pot">
+      <div class="card-pot-infos">
+        <div>
+          <h2><%= pot.name %> </h2>
+          <p><%= pot.end_date.strftime("%d %b %Y") %> - <strong>€<%= pot.total_amount/100 %></strong> raised</p>
+        </div>
+      </div>
         <button class= "card-pot-delete-btn">
           <%= link_to leave_path(pot), method: :get, data:{confirm: "Do you want to leave the pot?"} do %>
             <i class="fas fa-sign-out-alt"></i>
           <% end %>
         </button>
-        <button class= "card-pot-btn"><%= link_to "Enter", pot_path(pot) %></button>
-        </div>
-      </div>
-      <%end %>
-    <% else %>
-      <div>
-      <ul>
-        <li><%="You're not taking part in any pots" %> </li>
-      </ul>
+    </div>
     <% end %>
-      </div>
-
-  <div class= "container-btn-submit row justify-content-center">
-    <button type= "button" class="btn-p-sm mt-3 centered"> <%= link_to "Create Pot", new_pot_path %></button>
+  <%end %>
+<% else %>
+  <div>
+  <ul>
+    <li><%="You're not taking part in any pots" %> </li>
+  </ul>
+<% end %>
   </div>
+
+<div class= "container-btn-submit row justify-content-center">
+  <button type= "button" class="btn-p-sm mt-3 centered"> <%= link_to "Create Pot", new_pot_path %></button>
 </div>

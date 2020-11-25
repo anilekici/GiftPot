@@ -224,7 +224,7 @@ button {
 .card-pot-btn {
   display: inline-block;
   border-radius: 3px;
-  background-color: red;
+  background-color: $green;
   text-decoration: none;
   color: white;
   text-align: center;
@@ -291,5 +291,9 @@ text-decoration: none;
 }
 
 .card-pot-delete-btn {
-    color: red;
+  color: $red;
+}
+
+.card-pot-delete-btn:hover {
+  opacity: 0.2;
 }
