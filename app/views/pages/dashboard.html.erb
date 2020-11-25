@@ -12,11 +12,13 @@
           <p><%= pot.end_date.strftime("%d %b %Y") %> - <strong>€<%= pot.total_amount/100 %></strong> raised</p>
         </div>
       </div>
+        <% if pot.active == true %>
         <button class= "card-pot-delete-btn">
             <%= link_to finish_pot_path(pot), method: "patch", data:{confirm: "Do you confirm finishing the pot?"} do %>
               <i class="fas fa-check-circle"></i>
             <% end %>
         </button>
+        <% end %>
     </div>
     <% end %>
   <% end %>
