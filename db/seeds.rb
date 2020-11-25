@@ -52,7 +52,7 @@ puts "creating pots"
 end
 
 puts "creating users pots"
-30.times do
+10.times do
   UsersPot.create!(
     user: User.all.sample,
     pot: Pot.all.sample,
