@@ -1,6 +1,10 @@
 class PotsController < ApplicationController
   before_action :set_pot, only: [:show, :edit, :update, :destroy, :finish, :join]
 
+  def all
+    @pots = Pot.order(end_date: :asc)
+  end
+  
   def index
     @pots = Pot.all
   end
