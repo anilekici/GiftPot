@@ -1,5 +1,4 @@
 class PotsController < ApplicationController
-
   before_action :set_pot, only: [:show, :edit, :update, :destroy, :finish, :join]
 
   def index
@@ -12,6 +11,8 @@ class PotsController < ApplicationController
     @ordered_gifts = @pot.gifts.left_joins(:gift_votes).group(:id).select('gifts.*', 'COUNT(gift_votes.id) vote_count').order('vote_count DESC')
     @winner_gift = @ordered_gifts.first
     @gift = Gift.new
+    @contribution = Contribution.where(user: current_user, pot: @pot).first
+    @user = current_user
   end
 
   def new
@@ -64,7 +65,7 @@ class PotsController < ApplicationController
     @pot.destroy
     redirect_to dashboard_path
   end
-  
+
   def leave
     @user = current_user
     set_pot
@@ -85,5 +86,9 @@ class PotsController < ApplicationController
 
   def set_pot
     @pot = Pot.find(params[:id])
+  end
+
+  def contribution_params
+    params.require(:contribution).permit(:amount)
   end
 end
