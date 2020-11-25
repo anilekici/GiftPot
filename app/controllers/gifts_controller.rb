@@ -10,7 +10,7 @@ class GiftsController < ApplicationController
     @pot = Pot.find(params[:pot_id])
     @gift = Gift.new(gift_params)
     @gift.pot = @pot
-    @gift.save
+
     if @gift.save
       redirect_to pot_path(@pot.id), notice: "Well done!! You added a Gift Option"
     else
@@ -38,14 +38,14 @@ class GiftsController < ApplicationController
   end
 
   def winning_gift
-    
+
   end
 
 
   private
 
   def gift_params
-    params.require(:gift).permit(:pot_id, :name, :price)
+    params.require(:gift).permit(:pot_id, :name, :price, photos: [])
   end
 
   def set_gift

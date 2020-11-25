@@ -4,6 +4,8 @@ class Gift < ApplicationRecord
 
   validates :name, :price, presence: true
 
+  has_many_attached :photos
+
   def votes
     gift_votes.count
   end
