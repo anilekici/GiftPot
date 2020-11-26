@@ -28,7 +28,7 @@
         <% elsif @pot.days_remaining > 0 %>
           <h6>Date: <%= @pot.end_date.strftime("%d %b %Y")%> ➼ <strong><%= @pot.days_remaining %> Days left</strong> </h6>
         <% end %>
-        <h2><strong><%= @pot.total_amount/100 %>€ raised </strong><h2>
+        <h2><strong> €<%= @pot.total_amount/100 %> raised </strong><h2>
         <% unless Contribution.where(user: current_user, pot: @pot).exists? %>
           <%= link_to "Contribute", new_pot_contribution_path(@pot), class: "btn-sm bgg" %>
         <% else %>
@@ -54,7 +54,7 @@
           </p>
           <div class="collapse" id="collapseExample">
             <div>
-              <%= render 'shared/gift_form' %> 
+              <%= render 'shared/gift_form' %>
             </div>
           </div>
         <div class="container mt-2">
@@ -68,9 +68,9 @@
         </p>
         <div class="collapse" id="collapseExample">
           <div>
-            <%= render 'shared/carousell' %> 
+            <%= render 'shared/carousell' %>
           </div>
-        </div>  
+        </div>
         <% else %>
           <h3> NO GIFTS yet :( </h3>
           <div class="container mt-2">
@@ -78,8 +78,8 @@
             <%= link_to "Chat", chatroom_path(@pot.chatroom.id), class: "btn-sm bgb" %>
           </div>
         <% end %>
-    <% end %> 
+    <% end %>
 </div>
- 
+
 
 
