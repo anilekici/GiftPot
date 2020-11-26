@@ -1,14 +1,21 @@
 <body>
   <div class="home-banner">
+    <img src="https://res.cloudinary.com/dbybfcjmu/image/upload/v1605723734/logoround_liurnl.png" style= "width: 100px">
     <div class="home-text">
-      <h2>Welcome to</h2>
+      <h2>Welcome To</h2>
       <h1>GiftPot</h1>
     </div>
-    <div class="d-flex justify-content-around mb-3">
-        <p class="home-buttons"><%= link_to "Create Pot", new_pot_path, class: "blue-btn" %></p>
+    <div>
+      <p style= "color: white">The hassle-free solution to aggregate contributions </p>
+
+    </div>
+    <div class="d-flex justify-content-around mb-3" style="flex-direction: column" >
+        <p class="home-buttons"><%= link_to "Get Started", new_pot_path, class: "blue-btn" %></p>
         <% if user_signed_in? %>
           <p class= "home-buttons"><%= link_to "My Pots", dashboard_path, class: "blue-btn" %></p>
           <p class= "home-buttons"><%= link_to "Chat", chatrooms_path, class: "blue-btn" %></p>
+        <% else %>
+         <!--  <p class= "home-buttons"><%= link_to "Log In", new_user_session_path, class: "blue-btn" %></p> -->
         <% end %>
     </div>
   </div>
