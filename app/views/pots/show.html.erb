@@ -46,6 +46,7 @@
       </li>
       <% end %>
     </ul>
+#
     <%= render 'shared/carousell' %>
     <% if @pot.owner == current_user %>
       <div class="container mt-2">
@@ -64,7 +65,35 @@
       </div>
               
       <% else %>
-        <% if @pot.owner == current_user %>
+#
+            <% if @pot.owner == current_user %>
+
+              <p>
+              <a class="btn-sm bgp" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                Add a Gift
+              </a>
+              </p>
+            <div class="collapse" id="collapseExample">
+            <div>
+            <%= render 'shared/gift_form' %>
+            </div>
+            </div>
+
+              <div class="container mt-2">
+                <%= link_to "Finish", finish_pot_path(@pot), method: :patch, class: "btn-sm bgb" %>
+                <%= link_to "Chat", chatroom_path(@pot.chatroom.id), class: "btn-sm bgb" %>
+              </div>
+
+            <% else %>
+              <h3> NO GIFTS yet :( </h3>
+              <div class="container mt-2">
+                <%= link_to "Leave", leave_path(@pot), class: "btn-sm bgb" %>
+                <%= link_to "Chat", chatroom_path(@pot.chatroom.id), class: "btn-sm bgb" %>
+              </div>
+            <% end %>
+
+
+#
           <p>
             <a class="btn-sm bgp" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
               Add + <i class="fas fa-gift" style="color:white"></i>
