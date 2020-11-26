@@ -1,10 +1,16 @@
 <div class="container text-center my-3">
-  <div class="d-flex">
+  <div class="d-flex justify-content-between">
+  <% if @pot.owner == current_user %>
+    <%= link_to '<i class="fas fa-arrow-left fa-1x" style="color:black"></i>'.html_safe, dashboard_path  %>
+    <%= link_to '<i class="far fa-window-close fa-1x" style="color:black"></i>'.html_safe, finish_pot_path(@pot), data:{confirm: "Do you confirm finishing the pot?"} %>
+  <% else %>
     <%= link_to '<i class="fas fa-arrow-left" style="color:black"></i>'.html_safe, dashboard_path  %>
+  <% end %>
   </div>
+  <div class="card p-2 bgt">
   <h2><%= @pot.name.capitalize %></h2>
     <% if @pot.active == false %>
-      <div class="card p-2 pink">
+      <div class="card p-2 bgp">
         <h6><%= @pot.description %></h6>
         <h3> Gift Date ➼ <%= @pot.end_date.strftime("%d %b %Y") %></h3>
         <h2> Total raised: <strong><%= @pot.total_amount/100 %>€</strong></h2>
@@ -21,7 +27,7 @@
         <%= link_to "Chat", chatroom_path(@pot.chatroom.id), class: "btn-sm bgg" %>
       </div>
     <% else %>
-      <div class="card-pot p-2">
+      <div class="card p-2">
         <h6><%= @pot.description %></h6>
         <% if @pot.days_remaining == 0 %>
           <h3> Today is the Event day </h3>
@@ -30,50 +36,44 @@
         <% end %>
         <h2><strong><%= @pot.total_amount/100 %>€ raised </strong><h2>
         <% unless Contribution.where(user: current_user, pot: @pot).exists? %>
-          <%= link_to "Contribute", new_pot_contribution_path(@pot), class: "btn-sm bgg" %>
+          <div class="pt-2 pb-2"><%= link_to '<i class="fas fa-hand-holding-usd fa-2x" style="color:#1EDD88"></i>'.html_safe, new_pot_contribution_path(@pot) %></div>
         <% else %>
           <h3><strong>€<%= @contribution.amount_cents/100 %> contributed by <%= @user.first_name %></strong><h3>
         <% end %>
       </div>
-      <ul class="list-group">
-        <% @ordered_gifts.each do |gift| %>
-          <li class="list-group-item d-flex justify-content-between align-items-center mt-1 card-pot orange">
+      <ul class= "card-pot orange px-2 py-1">
+         <% @ordered_gifts.each do |gift| %> 
+          <li class="d-flex justify-content-between align-items-center mt-1">
             <span class="badge badge-primary badge-pill">Votes: <%= gift.votes %></span>
             <%= gift.name.capitalize %> - €<%= gift.price %>
             <% if @pot.owner == current_user %>
-            <%= link_to '<i class="fas fa-trash" style="color:white"></i>'.html_safe, gift_path(gift), method: :delete %>
+            <%= link_to '<i class="fas fa-trash" style="color:#D20E85"></i>'.html_safe, gift_path(gift), method: :delete %>
             <% end %>
           </li>
         <% end %>
       </ul>
       <% if @pot.owner == current_user %>
-       <p>
-            <a class="btn-sm bgp" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-              Add <i class="fas fa-gift" style="color:white"></i>
-            </a>
-          </p>
-          <div class="collapse" id="collapseExample">
-            <div>
-              <%= render 'shared/gift_form' %> 
+  
+                <%= render 'shared/carousell' %> 
+          
+        <div class="container mt-2 d-flex justify-content-between mt-3">
+          
+          <%= link_to'<i class="far fa-comments fa-2x" style="color:white"></i>'.html_safe, chatroom_path(@pot.chatroom.id), class: "btn-sqr bgp" %>
+        <p>
+              <a class="btn-sqr bgp" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                <i class="fas fa-gift fa-2x" style="color:white"></i>
+              </a>
+            </p>
+            <div class="collapse" id="collapseExample">
+              <div>
+                <%= render 'shared/gift_form' %> 
+              </div>
             </div>
           </div>
-        <div class="container mt-2">
-          <%= link_to '<i class="far fa-window-close" style="color:white"></i>'.html_safe, finish_pot_path(@pot), class: "btn-sm bgp" %>
-          <%= link_to '<i class="far fa-comments" style="color:white"></i>'.html_safe, chatroom_path(@pot.chatroom.id), class: "btn-sm bgp" %>
         </div>
-        <p>
-          <a class="btn-sm bgp" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-            VOTE <i class="fas fa-gift" style="color:white"></i>
-          </a>
-        </p>
-        <div class="collapse" id="collapseExample">
-          <div>
-            <%= render 'shared/carousell' %> 
-          </div>
-        </div>  
         <% else %>
           <h3> NO GIFTS yet :( </h3>
-          <div class="container mt-2">
+          <div class="container mt-2 d-flex justify-content-around">
             <%= link_to "Leave", leave_path(@pot), class: "btn-sm bgb" %>
             <%= link_to "Chat", chatroom_path(@pot.chatroom.id), class: "btn-sm bgb" %>
           </div>
