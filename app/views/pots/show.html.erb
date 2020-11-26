@@ -40,18 +40,20 @@
         <% else %>
           <h3><strong>€<%= @contribution.amount_cents/100 %> contributed by <%= @user.first_name %></strong><h3>
         <% end %>
-      </div class= "card-pot orange px-2 py-1">
+      </div>
+      <div class= "card-pot px-2 py-1 card-pot-enpty">
           <% @ordered_gifts.each do |gift| %> 
-        <ul>
-            <li class="d-flex justify-content-between align-items-center mt-1">
-              <span class="badge badge-primary badge-pill">Votes: <%= gift.votes %></span>
-              <%= gift.name.capitalize %> - €<%= gift.price %>
-              <% if @pot.owner == current_user %>
-              <%= link_to '<i class="fas fa-trash" style="color:#D20E85"></i>'.html_safe, gift_path(gift), method: :delete %>
-              <% end %>
-            </li>
-        </ul>
-      <% end %>
+            <ul>
+              <li class="d-flex justify-content-between align-items-center mt-1">
+                <span class="badge badge-primary badge-pill">Votes: <%= gift.votes %></span>
+                <%= gift.name.capitalize %> - €<%= gift.price %>
+                <% if @pot.owner == current_user %>
+                <%= link_to '<i class="fas fa-trash" style="color:#D20E85"></i>'.html_safe, gift_path(gift), method: :delete %>
+                <% end %>
+              </li>
+            </ul>
+          <% end %>
+        </div>
       <% if @pot.owner == current_user %>
 
   
