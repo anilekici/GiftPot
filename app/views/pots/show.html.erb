@@ -9,9 +9,23 @@
   </div>
   <div class="card p-2 bgt">
   <h2><%= @pot.name.capitalize %></h2>
-  <div class="btn-inv">
-  <%= link_to "share this page", "whatsapp://send?text=Hello%2C%20World!%20#{request.original_url}" %>
-  </div>
+
+<%#= CHECKING IF OWNER/MEMBER/NON-MEMBER AND DISPLAYING LINK TO SHARE OR JOIN ACCORDINGLY %>
+  <% if @pot.owner == current_user %>
+    <div class="btn-inv">
+      <%= link_to "share this page", "whatsapp://send?text=Hello%2C%20World!%20#{request.original_url}" %>
+    </div>
+  <% elsif @pot.users_pots.where user_id:(current_user) == true %>
+    <div class="btn-inv">
+      <%= link_to "share this page", "whatsapp://send?text=Hello%2C%20World!%20#{request.original_url}" %>
+    </div>
+  <% else %>
+    <div class="btn-inv">
+      <%= link_to "JOIN TEST BUTTON", join_path(@pot), method: :post, class: "btn btn-secondary" %>
+    </div>
+  <% end %>
+
+
     <% if @pot.active == false %>
       <div class="card p-2 bgp">
         <h6><%= @pot.description %></h6>
@@ -83,5 +97,3 @@
     <% end %>
   </div>
 </div>
-
-<%= link_to "JOIN TEST BUTTON", join_path(@pot), method: :post, class: "btn btn-secondary" %>
