@@ -50,7 +50,7 @@
   </head>
 
   <body>
-    <% unless action_name == "show" && controller_name == "chatrooms" %>
+    <% unless action_name == "show" && controller_name == "chatrooms" || action_name == "home" && controller_name == "pages" %>
       <%= render 'shared/navbar'%>
     <% end %>
     <%= render 'shared/flashes' %>
