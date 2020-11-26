@@ -4,7 +4,7 @@
 <% if @user.owned_pots.count != 0 %>
   <% @user.owned_pots.each do |pot| %>
     <%= link_to pot_path(pot) do %>
-    <div class="card-pot orange">
+    <div class="card-pot">
       <div class="card-pot-infos">
         <div>
           <h2><%= pot.name %> </h2>
@@ -14,7 +14,7 @@
         <% if pot.active == true %>
         <button class= "card-pot-delete-btn">
             <%= link_to finish_pot_path(pot), method: "patch", data:{confirm: "Do you confirm finishing the pot?"} do %>
-              <i class="fas fa-check-circle"></i>
+              <i class="fas fa-check-circle" style="color:black"></i>
             <% end %>
         </button>
         <% end %>

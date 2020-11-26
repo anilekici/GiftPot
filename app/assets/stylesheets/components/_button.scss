@@ -240,11 +240,11 @@ text-decoration: none;
 }
 
 .bgy {
-  background-color:#FFD44A;
+  background-color:#FFD34E;
 }
 
 .bgb {
-  background-color:#5267F8;
+  background-color:#5364FA;
 }
 
 .bgg {
@@ -252,11 +252,13 @@ text-decoration: none;
 }
 
 .bgp {
-  background-color:#D20E85
+  background-color:#E90D89;
 }
-
 .bgo {
-  background-color: #e67d22;
+  background-color: #FF8959;
+}
+.bgt {
+  background-color: #28D2C9;
 }
 
 
@@ -275,4 +277,37 @@ text-decoration: none;
 
 .card-pot-delete-btn:hover {
   opacity: 0.2;
+}
+
+.btn-sm-b {
+  display:inline-block;
+  padding:0.8em 1.2em;
+  // margin:10% 30%;
+  border:0.16em solid rgba(30, 221, 136,0.9);
+  border-radius:5px;
+  box-sizing: border-box;
+  text-decoration:none;
+  color: white;
+  text-shadow: 0 0.04em 0.04em rgba(255, 255, 255, 0.35);
+  text-align:center;
+  transition: all 0.2s;
+  // background-color:#D20E85;
+  text-transform: uppercase;
+  height: 50px;
+}
+
+.gb {
+  border-color: #1EDD88;
+}
+
+.btn-sqr {
+	border-radius:15px;
+	border:2px solid;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-size:18px;
+	padding:31px 31px;
+  text-decoration:none;
+  height: 100px;
 }

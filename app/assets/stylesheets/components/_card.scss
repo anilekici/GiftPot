@@ -27,7 +27,6 @@
 
 .card-pot {
   overflow: hidden;
-  background:  #ffd54ad2;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   margin: 10px;
   text-align: center;
@@ -56,13 +55,24 @@
 }
 
 .pink {
-  background-color: #d20e84af;
+  background-color:#E90D89;
 }
 
 .yellow {
-  background-color: #ffd54ad0;
+  background-color: #FCE34B;
 }
 
 .orange {
-  background-color:#e67d22c0;
+  background-color:#FF8959;
+}
+
+.green {
+  background-color: #28D2C9;
+}
+
+.backlogo {
+  background-image: url("logo.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
