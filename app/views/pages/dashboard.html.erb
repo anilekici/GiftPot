@@ -4,7 +4,7 @@
 <% if @user.owned_pots.count != 0 %>
   <% @user.owned_pots.each do |pot| %>
     <%= link_to pot_path(pot) do %>
-    <div class="card-pot">
+    <div class="card-pot bgy">
       <div class="card-pot-infos">
         <div>
           <h2><%= pot.name %> </h2>
@@ -13,7 +13,7 @@
       </div>
         <% if pot.active == true %>
         <button class= "card-pot-delete-btn">
-            <%= link_to finish_pot_path(pot), method: "patch", data:{confirm: "Do you confirm finishing the pot?"} do %>
+            <%= link_to finish_pot_path(pot), method: "patch", data:{confirm: "Are you sure you whant to finish the pot FOREVER 😥??"} do %>
               <i class="fas fa-check-circle" style="color:black"></i>
             <% end %>
         </button>
@@ -35,7 +35,7 @@
 <% if @user.pots.count != 0 %>
   <% @user.pots.each do |pot| %>
     <%= link_to pot_path(pot) do %>
-    <div class="card-pot">
+    <div class="card-pot bgt">
       <div class="card-pot-infos">
         <div>
           <h2><%= pot.name %> </h2>
@@ -43,8 +43,8 @@
         </div>
       </div>
         <button class= "card-pot-delete-btn">
-          <%= link_to leave_path(pot), method: :get, data:{confirm: "Do you want to leave the pot?"} do %>
-            <i class="fas fa-sign-out-alt"></i>
+          <%= link_to leave_path(pot), method: :get, data:{confirm: "🏃‍♀️🏃‍♂️ Are you sure you whant to leave the pot FOREVER?? 🏃‍♀️🏃‍♂️"} do %>
+            <i class="fas fa-sign-out-alt" style="color:white"></i>
           <% end %>
         </button>
     </div>
