@@ -35,7 +35,6 @@ import { countVotes } from 'plugins/vote_counter';
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
-  countVotes();
   flatpicker(".datepicker", {});
   initChatroomCable();
 });
