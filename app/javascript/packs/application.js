@@ -37,4 +37,14 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
   flatpicker(".datepicker", {});
   initChatroomCable();
+
+
+  let flash = document.querySelector('#flash')
+  if(flash) {
+    $(document).ready(function(){
+        setTimeout(function(){
+          $('#flash').remove();
+        }, 2000);
+    })
+  }
 });

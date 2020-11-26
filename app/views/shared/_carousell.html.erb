@@ -6,12 +6,14 @@
         <div class="carousel-inner w-100" role="listbox">
           <div class="carousel-item active">
             <div class="col-md-4">
-              <div class="card card-body backlogo">
+
+              <div class="card card-body backlogo", style="background-image: url(<%= @first_gift.photos.first.service_url if @first_gift.photos.any? %>)">
+
                 <h2><%= @first_gift.name %></h2>
               <%# Votes: <%= @first_gift.votes %>
               <% if current_user.has_voted_in_pot?(@pot) %>
                 <% if current_user.has_voted?(@first_gift) %>
-                  <%= link_to "Calcel", downvote_pot_path(@pot, @first_gift), class: "btn-sm bgp", method: :post %>
+                  <%= link_to "Cancel", downvote_pot_path(@pot, @first_gift), class: "btn-sm bgp", method: :post %>
                 <% end %>
               <% else %>
                 <%= link_to "Vote", upvote_pot_path(@pot, @first_gift), class: "btn-sm bgg", method: :post %>
@@ -22,7 +24,9 @@
         <% @pot.gifts.offset(1).each do |gift| %>
           <div class="carousel-item" class=>
             <div class="col-md-4">
-              <div class="card card-body backlogo">
+
+              <div class="card card-body backlogo", style="background-image: url(<%= gift.photos.first.service_url if gift.photos.any? %>)">
+
                 <h2><%= gift.name %></h2>
                 <% if current_user.has_voted_in_pot?(@pot) %>
                   <% if current_user.has_voted?(gift) %>

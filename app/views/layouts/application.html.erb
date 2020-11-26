@@ -46,11 +46,11 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
-
+    <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5fbfc51031564700129f785a&product=inline-share-buttons' async='async'></script>
   </head>
 
   <body>
-    <% unless action_name == "show" && controller_name == "chatrooms" %>
+    <% unless action_name == "show" && controller_name == "chatrooms" || action_name == "home" && controller_name == "pages" %>
       <%= render 'shared/navbar'%>
     <% end %>
     <%= render 'shared/flashes' %>
