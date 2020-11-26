@@ -15,16 +15,15 @@
     <div class="btn-inv">
       <%= link_to "share this page", "whatsapp://send?text=Hello%2C%20World!%20#{request.original_url}" %>
     </div>
-  <% elsif @pot.users_pots.where user_id:(current_user) == true %>
+  <% elsif (@pot.users_pots.where user_id:(current_user)).exists? %>
     <div class="btn-inv">
       <%= link_to "share this page", "whatsapp://send?text=Hello%2C%20World!%20#{request.original_url}" %>
     </div>
   <% else %>
-    <div class="btn-inv">
-      <%= link_to "JOIN TEST BUTTON", join_path(@pot), method: :post, class: "btn btn-secondary" %>
+    <div class="btn-inv-strong">
+      <%= link_to "JOIN THIS POT", join_path(@pot), method: :post %>
     </div>
   <% end %>
-
 
     <% if @pot.active == false %>
       <div class="card p-2 bgp">
