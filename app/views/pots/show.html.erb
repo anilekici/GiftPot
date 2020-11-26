@@ -9,6 +9,9 @@
   </div>
   <div class="card p-2 bgt">
   <h2><%= @pot.name.capitalize %></h2>
+  <div class="btn-inv">
+  <%= link_to "share this page", "whatsapp://send?text=Hello%2C%20World!%20#{request.original_url}" %>
+  </div>
     <% if @pot.active == false %>
       <div class="card p-2 bgp">
         <h6><%= @pot.description %></h6>
@@ -83,7 +86,4 @@
     <% end %>
 </div>
 
-<!-- ShareThis BEGIN --><div class="sharethis-inline-share-buttons">
-<p>buttons</p>
-</div><!-- ShareThis END -->
 <%= link_to "JOIN TEST BUTTON", join_path(@pot), method: :post, class: "btn btn-secondary" %>
