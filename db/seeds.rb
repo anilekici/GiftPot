@@ -97,7 +97,7 @@ tj = User.create!(
   email: "tj@tj.com",
   password: "123456",
   first_name: "TJ",
-  last_name: "Hollins",
+  last_name: "Hollis",
   nickname: "TJ"
 )
 
