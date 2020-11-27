@@ -2,19 +2,37 @@
 
 <h3 class= "text-center"> Owned Pots </h3>
 <% if @user.owned_pots.count != 0 %>
-  <% @user.owned_pots.each do |pot| %>
+  <% @ordered_pots.each do |pot| %>
     <%= link_to pot_path(pot) do %>
     <div class="card-pot bgy">
       <div class="card-pot-infos">
         <div>
           <h2><%= pot.name %> </h2>
-          <p><%= pot.end_date.strftime("%d %b %Y") %> - <strong>€<%= pot.total_amount/100 %></strong> raised</p>
+          <% if pot.active == false %>
+            <p>Pot ended! - <strong>€<%= pot.total_amount/100 %></strong> raised</p>
+          <% else %>
+            <% if  pot.days_remaining == 0%>
+              <p>Pot is ending today! - <strong>€<%= pot.total_amount/100 %></strong> raised</p>
+            <% elsif pot.days_remaining < 0 %>
+              <p>Pot ended! - <strong>€<%= pot.total_amount/100 %></strong> raised</p>
+            <% elsif pot.days_remaining == 1 %>
+              <p><%= pot.days_remaining %> day left - <strong>€<%= pot.total_amount/100 %></strong> raised</p>
+            <% else %>
+              <p><%= pot.days_remaining %> days left - <strong>€<%= pot.total_amount/100 %></strong> raised</p>
+            <% end %>
+          <% end %>
         </div>
       </div>
         <% if pot.active == true %>
         <button class= "card-pot-delete-btn">
-            <%= link_to finish_pot_path(pot), method: "patch", data:{confirm: "Are you sure you whant to finish the pot FOREVER 😥??"} do %>
-              <i class="fas fa-check-circle" style="color:black"></i>
+            <%= link_to finish_pot_path(pot), method: "patch", data:{confirm: "Are you sure you want to finish the pot FOREVER 😥??"} do %>
+              <i class="fas fa-check-circle" style="color:white"></i>
+            <% end %>
+        </button>
+        <% else %>
+        <button class= "card-pot-delete-btn">
+            <%= link_to pot_path(pot), method: "delete", data:{confirm: "Are you sure you want to delete the pot FOREVER 😥??"} do %>
+              <i class="fas fa-trash" style="color:white"></i>
             <% end %>
         </button>
         <% end %>
@@ -39,9 +57,20 @@
       <div class="card-pot-infos">
         <div>
           <h2><%= pot.name %> </h2>
-          <p><%= pot.end_date.strftime("%d %b %Y") %> - <strong>€<%= pot.total_amount/100 %></strong> raised</p>
+          <% if pot.active == false %>
+            <p>Pot ended! - <strong>€<%= pot.total_amount/100 %></strong> raised</p>
+          <% else %>
+            <% if  pot.days_remaining == 0%>
+              <p>Pot is ending today! - <strong>€<%= pot.total_amount/100 %></strong> raised</p>
+            <% elsif pot.days_remaining < 0 %>
+              <p>Pot ended! - <strong>€<%= pot.total_amount/100 %></strong> raised</p>
+            <% elsif pot.days_remaining == 1 %>
+              <p><%= pot.days_remaining %> day left - <strong>€<%= pot.total_amount/100 %></strong> raised</p>
+            <% else %>
+              <p><%= pot.days_remaining %> days left - <strong>€<%= pot.total_amount/100 %></strong> raised</p>
+            <% end %>
+          <% end %>
         </div>
-      </div>
         <button class= "card-pot-delete-btn">
           <%= link_to leave_path(pot), method: :get, data:{confirm: "🏃‍♀️🏃‍♂️ Are you sure you whant to leave the pot FOREVER?? 🏃‍♀️🏃‍♂️"} do %>
             <i class="fas fa-sign-out-alt" style="color:white"></i>

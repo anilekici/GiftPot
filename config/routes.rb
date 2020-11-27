@@ -2,14 +2,11 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-
-  resources :pots, except: [:destroy] do
+  
+  resources :pots do
     member do
       patch "/finish", to: "pots#finish"
     end
-  end
-
-  resources :pots do
     get '/thankyou', to: 'pages#thankyou'
 
     resources :gifts, only: [:new, :create, :destroy]

@@ -13,10 +13,10 @@
               <%# Votes: <%= @first_gift.votes %>
               <% if current_user.has_voted_in_pot?(@pot) %>
                 <% if current_user.has_voted?(@first_gift) %>
-                  <%= link_to "Cancel", downvote_pot_path(@pot, @first_gift), class: "btn-sm bgp", method: :post %>
+                  <%= link_to "Cancel", downvote_pot_path(@pot, @first_gift), class: "bgp-secondary", method: :post %>
                 <% end %>
               <% else %>
-                <%= link_to "Vote", upvote_pot_path(@pot, @first_gift), class: "btn-sm bgg", method: :post %>
+                <%= link_to "Vote", upvote_pot_path(@pot, @first_gift), class: "bgg", method: :post %>
               <% end %>
             </div>
           </div>
@@ -30,10 +30,10 @@
                 <h2><%= gift.name %></h2>
                 <% if current_user.has_voted_in_pot?(@pot) %>
                   <% if current_user.has_voted?(gift) %>
-                    <%= link_to "Cancel", downvote_pot_path(@pot, gift), class: "btn-sm bgp", method: :post %>
+                    <%= link_to "Cancel", downvote_pot_path(@pot, gift), class: "bgp-secondary", method: :post %>
                   <% end %>
                 <% else %>
-                  <%= link_to "Vote", upvote_pot_path(@pot, gift), class: "btn-sm bgg", method: :post %>
+                  <%= link_to "Vote", upvote_pot_path(@pot, gift), class: "bgg", method: :post %>
                 <% end %>
               </div>
             </div>
