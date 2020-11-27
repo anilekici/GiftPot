@@ -44,6 +44,11 @@ ActiveRecord::Schema.define(version: 2020_11_25_151849) do
     t.index ["pot_id"], name: "index_chatrooms_on_pot_id"
   end
 
+  create_table "checkouts", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "contributions", force: :cascade do |t|
     t.string "contribution_sku"
     t.integer "amount_cents", default: 0, null: false
