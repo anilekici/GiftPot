@@ -267,10 +267,13 @@ text-decoration: none;
 
 .bgg {
   color:#1EDD88;
-  border-color: 1EDD88;
+  border-color: #1EDD88;
   border: solid;
   border-width: 1px;
   padding: 10px;
+}
+.bgg:hover {
+  background-color: #1EDD88;
 }
 
 .bgp {
@@ -278,10 +281,13 @@ text-decoration: none;
 }
 .bgp-secondary {
   color:#E90D89;
-  border-color: E90D89;
+  border-color: #E90D89;
   border: solid;
   border-width: 1px;
   padding: 10px;
+}
+.bgp-secondary:hover {
+  background-color:#E90D89;
 }
 .bgo {
   background-color: #FF8959;
@@ -339,4 +345,15 @@ text-decoration: none;
 	padding:31px 31px;
   text-decoration:none;
   height: 100px;
+}
+.cont-btn i {
+  padding: 10px;
+  border-radius: 50%;
+  border: solid;
+  border-width: 1px;
+  color: #1EDD88;
+}
+.cont-btn i:hover {
+  background-color: #1EDD88;
+  color: white;
 }
