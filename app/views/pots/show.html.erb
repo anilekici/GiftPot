@@ -48,7 +48,9 @@
       <div class="card p-2">
         <p><%= @pot.description %></p>
         <% if @pot.days_remaining == 0 %>
-          <h3> Today is the Event day </h3>
+          <p>Pot is ending today!</p>
+        <% elsif @pot.days_remaining == 1 %>
+          <p>Date: <%= @pot.end_date.strftime("%d %b %Y")%> ➼ <strong><%= @pot.days_remaining %> Day left</strong> </p>
         <% elsif @pot.days_remaining > 0 %>
           <p>Date: <%= @pot.end_date.strftime("%d %b %Y")%> ➼ <strong><%= @pot.days_remaining %> Days left</strong> </p>
         <% end %>
@@ -98,4 +100,12 @@
         <% end %>
     <% end %>
   </div>
+</div>
+<div class="list-group">
+  <button type="button" class="list-group-item list-group-item-action active">
+    Owner - <%= @pot.owner.first_name %> <%= @pot.owner.last_name %>
+  </button>
+  <% @pot.users.each do |user| %>
+     <button type="button" class="list-group-item list-group-item-action">Member - <%= user.first_name %> <%= user.last_name %></button>
+  <% end %>
 </div>

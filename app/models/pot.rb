@@ -17,6 +17,5 @@ class Pot < ApplicationRecord
     date = Date.today
     days_left = (self.end_date - date).to_i
   end
-
 end
 

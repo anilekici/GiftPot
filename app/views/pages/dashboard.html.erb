@@ -8,14 +8,18 @@
       <div class="card-pot-infos">
         <div>
           <h2><%= pot.name %> </h2>
-          <% if  pot.days_remaining == 0%>
-            <p>Pot is ending today! - <strong>€<%= pot.total_amount/100 %></strong> raised</p>
-          <% elsif pot.days_remaining < 0 %>
+          <% if pot.active == false %>
             <p>Pot ended! - <strong>€<%= pot.total_amount/100 %></strong> raised</p>
-          <% elsif pot.days_remaining == 1 %>
-            <p><%= pot.days_remaining %> day left - <strong>€<%= pot.total_amount/100 %></strong> raised</p>
           <% else %>
-            <p><%= pot.days_remaining %> days left - <strong>€<%= pot.total_amount/100 %></strong> raised</p>
+            <% if  pot.days_remaining == 0%>
+              <p>Pot is ending today! - <strong>€<%= pot.total_amount/100 %></strong> raised</p>
+            <% elsif pot.days_remaining < 0 %>
+              <p>Pot ended! - <strong>€<%= pot.total_amount/100 %></strong> raised</p>
+            <% elsif pot.days_remaining == 1 %>
+              <p><%= pot.days_remaining %> day left - <strong>€<%= pot.total_amount/100 %></strong> raised</p>
+            <% else %>
+              <p><%= pot.days_remaining %> days left - <strong>€<%= pot.total_amount/100 %></strong> raised</p>
+            <% end %>
           <% end %>
         </div>
       </div>
@@ -47,14 +51,18 @@
       <div class="card-pot-infos">
         <div>
           <h2><%= pot.name %> </h2>
-          <% if  pot.days_remaining == 0%>
-            <p>Pot is ending today! - <strong>€<%= pot.total_amount/100 %></strong> raised</p>
-          <% elsif pot.days_remaining < 0 %>
+          <% if pot.active == false %>
             <p>Pot ended! - <strong>€<%= pot.total_amount/100 %></strong> raised</p>
-          <% elsif pot.days_remaining == 1 %>
-            <p><%= pot.days_remaining %> day left - <strong>€<%= pot.total_amount/100 %></strong> raised</p>
           <% else %>
-            <p><%= pot.days_remaining %> days left - <strong>€<%= pot.total_amount/100 %></strong> raised</p>
+            <% if  pot.days_remaining == 0%>
+              <p>Pot is ending today! - <strong>€<%= pot.total_amount/100 %></strong> raised</p>
+            <% elsif pot.days_remaining < 0 %>
+              <p>Pot ended! - <strong>€<%= pot.total_amount/100 %></strong> raised</p>
+            <% elsif pot.days_remaining == 1 %>
+              <p><%= pot.days_remaining %> day left - <strong>€<%= pot.total_amount/100 %></strong> raised</p>
+            <% else %>
+              <p><%= pot.days_remaining %> days left - <strong>€<%= pot.total_amount/100 %></strong> raised</p>
+            <% end %>
           <% end %>
         </div>
         <button class= "card-pot-delete-btn">
