@@ -8,8 +8,8 @@
         </span>
         <div>
           <%= simple_form_for [@pot, @contribution] do |f| %>
-            <%= f.input :amount, label: "Contribution amount (€)",  input_html: { autocomplete: "off"} %>
-            <%#= f.input :note, label: "Add a short note for the pot beneficiary", input_html: { autocomplete: "off"} %>
+            <%= f.input :amount, label: "Contribution amount (€)", input_html: { min: '2', autocomplete: "off" } %>
+            <%#= f.input :note, label: "Add a short note for the pot beneficiary", input_html: { autocomplete: "off"} //input_html: { autocomplete: "off"}%>
             <div class= "container-btn-submit">
               <%= f.submit "Take me to pay", class: "btn-p mt-3" %>
             </div>
