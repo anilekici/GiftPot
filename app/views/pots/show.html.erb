@@ -1,8 +1,11 @@
 <div class="container text-center my-3">
   <div class="d-flex justify-content-between">
-  <% if @pot.owner == current_user %>
+  <% if  @pot.owner == current_user && @pot.active == false %>
     <%= link_to '<i class="fas fa-arrow-left fa-1x" style="color:black"></i>'.html_safe, dashboard_path  %>
-    <%= link_to '<i class="far fa-window-close fa-1x" style="color:black"></i>'.html_safe, finish_pot_path(@pot), method: :patch, data:{confirm: "Are you sure you whant to finish the pot FOREVER 💰??"} %>
+    <%= link_to '<i class="far fa-window-close fa-1x" style="color:black"></i>'.html_safe, pot_path(@pot), method: :delete, data:{confirm: "Are you sure you want to delete the pot FOREVER 💰??"} %>
+  <% elsif @pot.owner == current_user %>
+    <%= link_to '<i class="fas fa-arrow-left fa-1x" style="color:black"></i>'.html_safe, dashboard_path  %>
+    <%= link_to '<i class="far fa-window-close fa-1x" style="color:black"></i>'.html_safe, finish_pot_path(@pot), method: :patch, data:{confirm: "Are you sure you want to finish the pot FOREVER 💰??"} %>
   <% else %>
     <%= link_to '<i class="fas fa-arrow-left" style="color:black"></i>'.html_safe, dashboard_path  %>
   <% end %>
@@ -63,18 +66,18 @@
         <% end %>
       </div>
       <div class= "card-pot px-2 py-1 card-pot-empty">
-          <% @ordered_gifts.each do |gift| %>
-            <ul>
-              <li class="d-flex justify-content-between align-items-center mt-1">
-                <span class="badge badge-primary badge-pill">Votes: <%= gift.votes %></span>
-                <%= gift.name.capitalize %> - €<%= gift.price %>
-                <% if @pot.owner == current_user %>
-                <%= link_to '<i class="fas fa-trash" style="color:#D20E85"></i>'.html_safe, gift_path(gift), method: :delete %>
-                <% end %>
-              </li>
-            </ul>
-          <% end %>
-        </div>
+        <% @ordered_gifts.each do |gift| %>
+          <ul>
+            <li class="d-flex justify-content-between align-items-center mt-1">
+              <span class="badge badge-primary badge-pill">Votes: <%= gift.votes %></span>
+              <%= gift.name.capitalize %> - €<%= gift.price %>
+              <% if @pot.owner == current_user %>
+              <%= link_to '<i class="fas fa-trash" style="color:#D20E85"></i>'.html_safe, gift_path(gift), method: :delete %>
+              <% end %>
+            </li>
+          </ul>
+        <% end %>
+      </div>
       <% if @pot.owner == current_user %>
 
 
@@ -103,9 +106,11 @@
 </div>
 <div class="list-group">
   <button type="button" class="list-group-item list-group-item-action active">
-    Owner - <%= @pot.owner.first_name %> <%= @pot.owner.last_name %>
+    Owner - <%= @pot.owner.first_name %> <%= @pot.owner.last_name %> | Voted for: <strong><%= @pot.owner.gift_vote.gift.name if @pot.owner.gift_vote != nil %></strong>
   </button>
   <% @pot.users.each do |user| %>
-     <button type="button" class="list-group-item list-group-item-action">Member - <%= user.first_name %> <%= user.last_name %></button>
+    <button type="button" class="list-group-item list-group-item-action">
+      Member - <%= user.first_name %> <%= user.last_name %> | Voted for: <strong><%= user.gift_vote.gift.name if user.gift_vote != nil %></strong>
+    </button>
   <% end %>
 </div>
