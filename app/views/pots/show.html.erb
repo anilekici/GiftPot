@@ -43,7 +43,7 @@
 
           <%#= CHECKING IF OWNER/MEMBER/NON-MEMBER AND DISPLAYING LINK TO SHARE OR JOIN ACCORDINGLY %>
       <% if @pot.owner == current_user || (@pot.users_pots.where user_id:(current_user)).exists? %>
-          <%= link_to 'Invite to Pot'.html_safe, "whatsapp://send?text=Hello%2C%20World!%20#{request.original_url}", class: "btn-inv" %>
+          <%= link_to 'Invite to Pot'.html_safe, "whatsapp://send?text=I’m%20raising%20for%20a%20gift%20and%20I%20think%20you’d%20like%20to%20be%20part%20of%20it%20-%20join%20my%20pot:%20#{request.original_url}", class: "btn-inv" %>
       <% else %>
           <%= link_to "Join Pot", join_path(@pot), method: :post, class: "btn-inv-strong" %>
       <% end %>
