@@ -9,14 +9,14 @@
 
               <div class="card card-body backlogo", style="background-image: url(<%= @first_gift.photos.first.service_url if @first_gift.photos.any? %>)">
 
-                <h2><%= @first_gift.name %></h2>
+                <h3 class= "card-pot card-pot-empty bgw"><%= @first_gift.name %></h3>
               <%# Votes: <%= @first_gift.votes %>
               <% if current_user.has_voted_in_pot?(@pot) %>
                 <% if current_user.has_voted?(@first_gift) %>
-                  <%= link_to "Cancel", downvote_pot_path(@pot, @first_gift), class: "bgp-secondary", method: :post %>
+                  <%= link_to "Cancel", downvote_pot_path(@pot, @first_gift), class: "bgp-secondary bgw", method: :post %>
                 <% end %>
               <% else %>
-                <%= link_to "Vote", upvote_pot_path(@pot, @first_gift), class: "bgg", method: :post %>
+                <%= link_to "Vote", upvote_pot_path(@pot, @first_gift), class: "bgg bgw", method: :post %>
               <% end %>
             </div>
           </div>
@@ -27,13 +27,13 @@
 
               <div class="card card-body backlogo", style="background-image: url(<%= gift.photos.first.service_url if gift.photos.any? %>)">
 
-                <h2><%= gift.name %></h2>
+                <h3 class= "card-pot card-pot-empty bgw"><%= gift.name %></h3>
                 <% if current_user.has_voted_in_pot?(@pot) %>
                   <% if current_user.has_voted?(gift) %>
-                    <%= link_to "Cancel", downvote_pot_path(@pot, gift), class: "bgp-secondary", method: :post %>
+                    <%= link_to "Cancel", downvote_pot_path(@pot, gift), class: "bgp-secondary bgw", method: :post %>
                   <% end %>
                 <% else %>
-                  <%= link_to "Vote", upvote_pot_path(@pot, gift), class: "bgg", method: :post %>
+                  <%= link_to "Vote", upvote_pot_path(@pot, gift), class: "bgg bgw", method: :post %>
                 <% end %>
               </div>
             </div>
