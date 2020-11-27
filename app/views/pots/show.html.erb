@@ -106,11 +106,11 @@
 </div>
 <div class="list-group">
   <button type="button" class="list-group-item list-group-item-action active">
-    Owner - <%= @pot.owner.first_name %> <%= @pot.owner.last_name %> | Voted for: <strong><%= @pot.owner.gift_vote.gift.name if @pot.owner.gift_vote != nil %></strong>
+    Owner - <%= @pot.owner.first_name %> <%= @pot.owner.last_name %>
   </button>
   <% @pot.users.each do |user| %>
     <button type="button" class="list-group-item list-group-item-action">
-      Member - <%= user.first_name %> <%= user.last_name %> | Voted for: <strong><%= user.gift_vote.gift.name if user.gift_vote != nil %></strong>
+      Member - <%= user.first_name %> <%= user.last_name %>
     </button>
   <% end %>
 </div>
