@@ -13,9 +13,17 @@
 
     <% if @pot.active == false %>
       <div class="card p-2 bgp">
-        <h6><%= @pot.description %></h6>
+        <p><%= @pot.description %></p>
         <h3> Gift Date ➼ <%= @pot.end_date.strftime("%d %b %Y") %></h3>
         <h2> Total raised: <strong><%= @pot.total_amount/100 %>€</strong></h2>
+        <% if (@pot.owner.contributions.where pot_id:(@pot)).last != nil %>
+          <p><%= @pot.owner.first_name %> <%= @pot.owner.last_name %> - Contribution: <%= (@pot.owner.contributions.where pot_id:(@pot)).last.amount_cents/100 %></p>
+        <% end %>
+        <% @pot.users.each do |user| %>
+          <% if (user.contributions.where pot_id:(@pot)).last != nil %>
+            <p><%= user.first_name %> <%= user.last_name %> - Contribution: <%= (user.contributions.where pot_id:(@pot)).last.amount_cents/100 %></p>
+          <% end %>
+        <% end %>
       </div>
       <div class="card p-2 mt-2 pink">
         <% if @winner_gift != nil %>
@@ -31,35 +39,28 @@
     <% else %>
 
           <%#= CHECKING IF OWNER/MEMBER/NON-MEMBER AND DISPLAYING LINK TO SHARE OR JOIN ACCORDINGLY %>
-      <% if @pot.owner == current_user %>
-        <div class="btn-inv">
-          <%= link_to "share this page", "whatsapp://send?text=Hello%2C%20World!%20#{request.original_url}" %>
-        </div>
-      <% elsif (@pot.users_pots.where user_id:(current_user)).exists? %>
-        <div class="btn-inv">
-          <%= link_to "share this page", "whatsapp://send?text=Hello%2C%20World!%20#{request.original_url}" %>
-        </div>
+      <% if @pot.owner == current_user || (@pot.users_pots.where user_id:(current_user)).exists? %>
+          <%= link_to 'Invite to Pot'.html_safe, "whatsapp://send?text=Hello%2C%20World!%20#{request.original_url}", class: "btn-inv" %>
       <% else %>
-        <div class="btn-inv-strong">
-          <%= link_to "JOIN THIS POT", join_path(@pot), method: :post %>
-        </div>
+          <%= link_to "Join Pot", join_path(@pot), method: :post, class: "btn-inv-strong" %>
       <% end %>
 
       <div class="card p-2">
-        <h6><%= @pot.description %></h6>
+        <p><%= @pot.description %></p>
         <% if @pot.days_remaining == 0 %>
           <h3> Today is the Event day </h3>
         <% elsif @pot.days_remaining > 0 %>
-          <h6>Date: <%= @pot.end_date.strftime("%d %b %Y")%> ➼ <strong><%= @pot.days_remaining %> Days left</strong> </h6>
+          <p>Date: <%= @pot.end_date.strftime("%d %b %Y")%> ➼ <strong><%= @pot.days_remaining %> Days left</strong> </p>
         <% end %>
-        <h2><strong> €<%= @pot.total_amount/100 %> raised </strong><h2>
+        <h2><strong>💰 €<%= @pot.total_amount/100 %> raised 💰</strong></h2>
+        <% @pot.contributions.each do |contribution| %>
+          <p>€<%= contribution.amount_cents/100 %> contributed by <%= contribution.user.first_name %> <%= contribution.user.last_name %></p>
+        <% end %>
         <% unless Contribution.where(user: current_user, pot: @pot).exists? %>
           <div class="pt-2 pb-2"><%= link_to '<i class="fas fa-hand-holding-usd fa-2x" style="color:#1EDD88"></i>'.html_safe, new_pot_contribution_path(@pot) %></div>
-        <% else %>
-          <h3><strong>€<%= @contribution.amount_cents/100 %> contributed by <%= @user.first_name %></strong><h3>
         <% end %>
       </div>
-      <div class= "card-pot px-2 py-1 card-pot-enpty">
+      <div class= "card-pot px-2 py-1 card-pot-empty">
           <% @ordered_gifts.each do |gift| %>
             <ul>
               <li class="d-flex justify-content-between align-items-center mt-1">

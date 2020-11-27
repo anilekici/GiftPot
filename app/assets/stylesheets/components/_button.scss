@@ -51,7 +51,7 @@
   padding: 0 0 3rem;
   font: 500 14px 'Rubik', sans-serif;
   letter-spacing: .5px;
-  text-transform: uppercase;
+  // text-transform: uppercase;
   text-shadow: 0 1px 1px rgba(0,0,0,0.4);
 }
 
@@ -193,7 +193,7 @@ button {
   text-decoration: none;
   color: white;
   text-align: center;
-  text-transform: uppercase;
+  // text-transform: uppercase;
   transition: all 0.2s;
   box-sizing: border-box;
   right: 60px;
@@ -213,7 +213,7 @@ button {
   text-align:center;
   transition: all 0.2s;
   // background-color:#D20E85;
-  text-transform: uppercase;
+  // text-transform: uppercase;
   width: 100%;
   height: 50px;
 }
@@ -231,46 +231,27 @@ button {
   text-align:center;
   transition: all 0.2s;
   // background-color:#D20E85;
-  text-transform: uppercase;
+  // text-transform: uppercase;
   height: 50px;
 }
 
 .btn-inv {
-  display:inline-block;
   padding:10px 20px;
-  // margin:10% 30%;
-  border:0.16em solid rgba(250, 250, 250, 0.63);
-  border-radius:5px;
-  box-sizing: border-box;
-  text-decoration:none;
-  color: white;
-  text-shadow: 0 0.04em 0.04em rgba(255, 255, 255, 0.35);
-  text-align:center;
-  transition: all 0.2s;
-  // background-color:#D20E85;
-  text-transform: uppercase;
-  height: 35px;
-  width: auto;
+  background-color: #5267F8;
+}
+
+.btn-inv:hover {
+  opacity: 0.8;;
 }
 
 .btn-inv-strong {
-  display:inline-block;
-  padding:10px;
-  // margin:10% 30%;
-  border:0.16em solid rgba(250, 250, 250, 0.63);
-  border-radius:5px;
-  box-sizing: border-box;
-  text-decoration:none;
-  color: white;
-  text-shadow: 0 0.04em 0.04em rgba(255, 255, 255, 0.35);
-  text-align:center;
-  transition: all 0.2s;
   background-color:#D20E85;
-  height: 35px;
-  width: auto;
-  vertical-align: center;
+  padding:10px 20px;
 }
 
+.btn-inv-strong:hover {
+  opacity: 0.8;
+}
 
 a {
 text-decoration: none;
@@ -329,7 +310,7 @@ text-decoration: none;
   text-align:center;
   transition: all 0.2s;
   // background-color:#D20E85;
-  text-transform: uppercase;
+  // text-transform: uppercase;
   height: 50px;
 }
 
@@ -339,7 +320,7 @@ text-decoration: none;
 
 .btn-sqr {
 	border-radius:3px;
-	border:2px solid;
+	border:1px solid;
 	display:inline-block;
 	cursor:pointer;
 	color:#ffffff;
