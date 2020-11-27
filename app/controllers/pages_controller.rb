@@ -6,6 +6,7 @@ class PagesController < ApplicationController
 
   def dashboard
     @user = current_user
+    @ordered_pots = @user.owned_pots.order(:end_date)
   end
 
   def thankyou

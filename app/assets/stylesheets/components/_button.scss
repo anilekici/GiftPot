@@ -266,11 +266,22 @@ text-decoration: none;
 }
 
 .bgg {
-  background-color:#1EDD88;
+  color:#1EDD88;
+  border-color: 1EDD88;
+  border: solid;
+  border-width: 1px;
+  padding: 10px;
 }
 
 .bgp {
   background-color:#E90D89;
+}
+.bgp-secondary {
+  color:#E90D89;
+  border-color: E90D89;
+  border: solid;
+  border-width: 1px;
+  padding: 10px;
 }
 .bgo {
   background-color: #FF8959;
@@ -281,11 +292,11 @@ text-decoration: none;
 
 
 .btn-sm:hover {
-  opacity: 0.5;
+  opacity: 0.8;
 }
 
 .btn:hover {
-  opacity: 0.5;
+  opacity: 0.8;
 }
 
 
