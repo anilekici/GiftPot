@@ -49,7 +49,6 @@
 <% end %>
 
 <h3 class= "text-center"> Joined Pots </h3>
-
 <% if @user.pots.count != 0 %>
   <% @user.pots.each do |pot| %>
     <%= link_to pot_path(pot) do %>
@@ -66,27 +65,30 @@
               <p>Pot ended! - <strong>€<%= pot.total_amount/100 %></strong> raised</p>
             <% elsif pot.days_remaining == 1 %>
               <p><%= pot.days_remaining %> day left - <strong>€<%= pot.total_amount/100 %></strong> raised</p>
-            <% else %>
-              <p><%= pot.days_remaining %> days left - <strong>€<%= pot.total_amount/100 %></strong> raised</p>
+          <% else %>
+            <p><%= pot.days_remaining %> days left - <strong>€<%= pot.total_amount/100 %></strong> raised</p>
             <% end %>
           <% end %>
         </div>
+        <%# <% if pot.active == true %>
         <button class= "card-pot-delete-btn">
           <%= link_to leave_path(pot), method: :get, data:{confirm: "🏃‍♀️🏃‍♂️ Are you sure you whant to leave the pot FOREVER?? 🏃‍♀️🏃‍♂️"} do %>
             <i class="fas fa-sign-out-alt" style="color:white"></i>
           <% end %>
         </button>
-    </div>
+        </div>
+      </div>
     <% end %>
   <%end %>
-<% else %>
-  <div>
+      <% else %>
+
   <ul>
     <li><%="You're not taking part in any pots" %> </li>
   </ul>
 <% end %>
   </div>
 
+</div>
 <div class= "container-btn-submit row justify-content-center ml-3 mr-3">
   <button type= "button" class="btn-bg bgp mt-3 centered"> <%= link_to "Create Pot", new_pot_path %></button>
 </div>
