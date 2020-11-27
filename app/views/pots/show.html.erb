@@ -2,10 +2,10 @@
   <div class="d-flex justify-content-between">
   <% if  @pot.owner == current_user && @pot.active == false %>
     <%= link_to '<i class="fas fa-arrow-left fa-1x" style="color:black"></i>'.html_safe, dashboard_path  %>
-    <%= link_to '<i class="far fa-window-close fa-1x" style="color:black"></i>'.html_safe, pot_path(@pot), method: :delete, data:{confirm: "Are you sure you want to delete the pot FOREVER 💰??"} %>
+    <%= link_to '<i class="far fa-window-close fa-1x" style="color:black"></i>'.html_safe, pot_path(@pot), method: :delete, data:{confirm: "Are you sure you want to delete the pot FOREVER??"} %>
   <% elsif @pot.owner == current_user %>
     <%= link_to '<i class="fas fa-arrow-left fa-1x" style="color:black"></i>'.html_safe, dashboard_path  %>
-    <%= link_to '<i class="far fa-window-close fa-1x" style="color:black"></i>'.html_safe, finish_pot_path(@pot), method: :patch, data:{confirm: "Are you sure you want to finish the pot FOREVER 💰??"} %>
+    <%= link_to '<i class="far fa-window-close fa-1x" style="color:black"></i>'.html_safe, finish_pot_path(@pot), method: :patch, data:{confirm: "Are you sure you want to permanantly close the pot and cash-out 💰??"} %>
   <% else %>
     <%= link_to '<i class="fas fa-arrow-left" style="color:black"></i>'.html_safe, dashboard_path  %>
   <% end %>
